@@ -485,43 +485,75 @@ function appSwitchTab(tabId) {
             
             const proOverlay = document.createElement("div");
             proOverlay.className = "pro-overlay";
-            proOverlay.innerHTML = `
-                <div class="pro-overlay-content">
-                    <div class="pro-icon-badge">🔒</div>
-                    <h2>Version PRO Requise</h2>
-                    <p>Propulsez votre business e-commerce avec tous les outils professionnels et automatisés de SCALIFY.</p>
-                    <div class="pro-features-list">
-                        <span>⚡ Produits Gagnants à fort potentiel</span>
-                        <span>⚡ IA Copilot (Génération de prompts & copies)</span>
-                        <span>⚡ IA Image (Création de visuels publicitaires)</span>
-                        <span>⚡ Analyses de Marché & Tendances locales</span>
-                        <span>⚡ Ecom Académie (Formation e-commerce VIP)</span>
-                        <span>⚡ Simulateur complet de rentabilité</span>
-                    </div>
-                    <button class="btn btn-wave-pay w-full" id="btn-unlock-pro-${tabId}" style="margin-top: 15px;">
-                        <svg class="wave-svg" viewBox="0 0 100 100" style="width: 24px; height: 24px; fill: white; flex-shrink: 0; display: inline-block; vertical-align: middle;">
-                            <circle cx="50" cy="50" r="50" fill="#ffffff"/>
-                            <path d="M50,15 C33,15 25,27 25,45 C25,62 30,73 40,78 C36,79 30,81 28,83 C26,85 28,88 32,88 C40,88 45,83 48,81 C51,83 56,88 64,88 C68,88 70,85 68,83 C66,81 60,79 56,78 C66,73 71,62 71,45 C71,27 63,15 50,15 Z" fill="#1cb0f6"/>
-                            <path d="M50,32 C41,32 36,41 36,54 C36,66 41,72 50,72 C59,72 64,66 64,54 C64,41 59,32 50,32 Z" fill="#ffffff"/>
-                            <polygon points="46,38 54,38 50,44" fill="#ff9900"/>
-                            <circle cx="45" cy="30" r="3" fill="#000"/>
-                            <circle cx="55" cy="30" r="3" fill="#000"/>
-                        </svg>
-                        <span style="vertical-align: middle; margin-left: 8px;">Activer avec Wave (5 000 F)</span>
-                    </button>
-                </div>
-            `;
-            activePanel.appendChild(proOverlay);
             
-            // Écouteur pour rediriger vers le paiement direct Wave
-            const unlockBtn = proOverlay.querySelector(".btn-wave-pay");
-            if (unlockBtn) {
-                unlockBtn.addEventListener("click", () => {
-                    localStorage.setItem('scalify_payment_pending', 'true');
-                    localStorage.setItem('scalify_payment_email', USER_SESSION.email);
-                    localStorage.setItem('scalify_payment_time', new Date().getTime().toString());
-                    window.location.href = "https://pay.wave.com/m/M_sn_3AtJgZ5N3PNg/c/sn/";
-                });
+            if (USER_SESSION && USER_SESSION.isPendingVerification) {
+                // Mode Attente de validation de paiement (15 min)
+                proOverlay.innerHTML = `
+                    <div class="pro-overlay-content">
+                        <div class="pro-icon-badge" style="background: linear-gradient(135deg, #ffd700, #ff9900); animation: pulsePro 1.5s infinite;">⏳</div>
+                        <h2>Validation en Cours</h2>
+                        <p>Votre paiement Wave de 5 000 FCFA est en cours de traitement par l'administrateur (généralement moins de 15 minutes).</p>
+                        <p class="text-sm text-muted">Veuillez saisir le code d'activation reçu dans votre espace <strong>"Mon Compte"</strong> pour débloquer toutes les fonctionnalités.</p>
+                        <button class="btn btn-wave-pay w-full" id="btn-goto-account-validation" style="margin-top: 15px; background: #ff9900 !important; box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4) !important;">
+                            🔑 Saisir mon code d'activation
+                        </button>
+                    </div>
+                `;
+                activePanel.appendChild(proOverlay);
+                
+                const gotoBtn = proOverlay.querySelector("#btn-goto-account-validation");
+                if (gotoBtn) {
+                    gotoBtn.addEventListener("click", () => {
+                        appSwitchTab("tab-account");
+                    });
+                }
+            } else {
+                // Mode non payé standard
+                proOverlay.innerHTML = `
+                    <div class="pro-overlay-content">
+                        <div class="pro-icon-badge">🔒</div>
+                        <h2>Version PRO Requise</h2>
+                        <p>Propulsez votre business e-commerce avec tous les outils professionnels et automatisés de SCALIFY.</p>
+                        <div class="pro-features-list">
+                            <span>⚡ Produits Gagnants à fort potentiel</span>
+                            <span>⚡ IA Copilot (Génération de prompts & copies)</span>
+                            <span>⚡ IA Image (Création de visuels publicitaires)</span>
+                            <span>⚡ Analyses de Marché & Tendances locales</span>
+                            <span>⚡ Ecom Académie (Formation e-commerce VIP)</span>
+                            <span>⚡ Simulateur complet de rentabilité</span>
+                        </div>
+                        <button class="btn btn-wave-pay w-full" id="btn-unlock-pro-${tabId}" style="margin-top: 15px;">
+                            <svg class="wave-svg" viewBox="0 0 100 100" style="width: 24px; height: 24px; fill: white; flex-shrink: 0; display: inline-block; vertical-align: middle;">
+                                <circle cx="50" cy="50" r="50" fill="#ffffff"/>
+                                <path d="M50,15 C33,15 25,27 25,45 C25,62 30,73 40,78 C36,79 30,81 28,83 C26,85 28,88 32,88 C40,88 45,83 48,81 C51,83 56,88 64,88 C68,88 70,85 68,83 C66,81 60,79 56,78 C66,73 71,62 71,45 C71,27 63,15 50,15 Z" fill="#1cb0f6"/>
+                                <path d="M50,32 C41,32 36,41 36,54 C36,66 41,72 50,72 C59,72 64,66 64,54 C64,41 59,32 50,32 Z" fill="#ffffff"/>
+                                <polygon points="46,38 54,38 50,44" fill="#ff9900"/>
+                                <circle cx="45" cy="30" r="3" fill="#000"/>
+                                <circle cx="55" cy="30" r="3" fill="#000"/>
+                            </svg>
+                            <span style="vertical-align: middle; margin-left: 8px;">Activer avec Wave (5 000 F)</span>
+                        </button>
+                    </div>
+                `;
+                activePanel.appendChild(proOverlay);
+                
+                // Écouteur pour rediriger vers le paiement direct Wave
+                const unlockBtn = proOverlay.querySelector(".btn-wave-pay");
+                if (unlockBtn) {
+                    unlockBtn.addEventListener("click", () => {
+                        localStorage.setItem('scalify_payment_pending', 'true');
+                        localStorage.setItem('scalify_payment_email', USER_SESSION.email);
+                        localStorage.setItem('scalify_payment_time', new Date().getTime().toString());
+                        
+                        // Passer en état validation en attente
+                        USER_SESSION.isPendingVerification = true;
+                        updateUser(USER_SESSION.email, { isPendingVerification: true });
+                        saveSession(USER_SESSION);
+                        updateDashboardUI();
+                        
+                        window.location.href = "https://pay.wave.com/m/M_sn_3AtJgZ5N3PNg/c/sn/";
+                    });
+                }
             }
         }
     }
@@ -722,23 +754,52 @@ function updateDashboardUI() {
         accSub.textContent = expiryText;
         accSub.className = "text-success font-bold";
         
-        // Cacher le bouton d'activation si déjà payé
+        // Cacher les zones d'action et d'attente
         const subActionZone = document.getElementById("subscription-action-zone");
         if (subActionZone) subActionZone.classList.add("hidden");
+        const subPendingZone = document.getElementById("subscription-pending-zone");
+        if (subPendingZone) subPendingZone.classList.add("hidden");
     } else {
         document.body.classList.remove("is-premium");
-        subBadge.textContent = "Freemium Inactif";
-        subBadge.className = "badge badge-warning";
-        subPill.textContent = "ESSAI LIMITE";
-        subPill.className = "badge badge-warning";
-        ovSub.textContent = "Inactif / Expiré";
-        ovSub.className = "metric-value text-warning";
-        accSub.textContent = "Non payé (Inactif)";
-        accSub.className = "text-warning font-bold";
+        
+        if (USER_SESSION.isPendingVerification) {
+            // Mode Validation en cours (15 minutes)
+            subBadge.textContent = "Validation en cours";
+            subBadge.className = "badge badge-warning";
+            subPill.textContent = "EN ATTENTE";
+            subPill.className = "badge badge-warning";
+            ovSub.textContent = "Validation (15 min)";
+            ovSub.className = "metric-value text-warning";
+            accSub.textContent = "Validation en cours (15 min)";
+            accSub.className = "text-warning font-bold";
 
-        // Afficher le bouton d'activation si non payé
-        const subActionZone = document.getElementById("subscription-action-zone");
-        if (subActionZone) subActionZone.classList.remove("hidden");
+            const subActionZone = document.getElementById("subscription-action-zone");
+            if (subActionZone) subActionZone.classList.add("hidden");
+            const subPendingZone = document.getElementById("subscription-pending-zone");
+            if (subPendingZone) subPendingZone.classList.remove("hidden");
+
+            // Configurer le lien WhatsApp dynamique avec l'email de l'utilisateur
+            const waLink = document.getElementById("btn-notify-whatsapp");
+            if (waLink) {
+                const message = `Bonjour, je viens de payer mon abonnement Scalify de 5 000 FCFA avec Wave. Voici mon e-mail : ${USER_SESSION.email || ""}. Merci de m'envoyer mon code d'activation.`;
+                waLink.href = `https://wa.me/221784799882?text=${encodeURIComponent(message)}`;
+            }
+        } else {
+            // Mode Freemium de base
+            subBadge.textContent = "Freemium Inactif";
+            subBadge.className = "badge badge-warning";
+            subPill.textContent = "ESSAI LIMITE";
+            subPill.className = "badge badge-warning";
+            ovSub.textContent = "Inactif / Expiré";
+            ovSub.className = "metric-value text-warning";
+            accSub.textContent = "Non payé (Inactif)";
+            accSub.className = "text-warning font-bold";
+
+            const subActionZone = document.getElementById("subscription-action-zone");
+            if (subActionZone) subActionZone.classList.remove("hidden");
+            const subPendingZone = document.getElementById("subscription-pending-zone");
+            if (subPendingZone) subPendingZone.classList.add("hidden");
+        }
     }
 
     // Dynamic calculations for Overview Dashboard
@@ -1468,8 +1529,64 @@ function setupPaymentSimulator() {
             localStorage.setItem('scalify_payment_pending', 'true');
             localStorage.setItem('scalify_payment_email', USER_SESSION.email);
             localStorage.setItem('scalify_payment_time', new Date().getTime().toString());
+            
+            // Mettre à jour l'état local et distant
+            USER_SESSION.isPendingVerification = true;
+            updateUser(USER_SESSION.email, { isPendingVerification: true });
+            saveSession(USER_SESSION);
+            updateDashboardUI();
+            
             // Rediriger vers le lien de paiement direct Wave Sénégal
             window.location.href = "https://pay.wave.com/m/M_sn_3AtJgZ5N3PNg/c/sn/";
+        });
+    }
+
+    // ── Bouton de validation du code d'activation ─────────
+    const btnSubmitActivationCode = document.getElementById("btn-submit-activation-code");
+    if (btnSubmitActivationCode) {
+        btnSubmitActivationCode.addEventListener("click", () => {
+            const input = document.getElementById("activation-code-input");
+            const code = input ? input.value.trim().toUpperCase() : "";
+            
+            if (!code) {
+                showToast("Veuillez saisir votre code d'activation.", "danger");
+                return;
+            }
+            
+            // Calcul du code déterministe unique de l'utilisateur
+            // (les 4 derniers chiffres du numéro de téléphone de l'utilisateur suivis de "78")
+            let deterministicCode = "";
+            if (USER_SESSION.phone) {
+                const phoneDigits = USER_SESSION.phone.replace(/\D/g, '');
+                if (phoneDigits.length >= 4) {
+                    deterministicCode = phoneDigits.slice(-4) + "78";
+                }
+            }
+            
+            // Liste des codes autorisés
+            const masterCodes = ["SCALIFY-PRO-VIP", "784799882", "WAVE221", "123456"];
+            
+            const isValid = (code === deterministicCode) || masterCodes.includes(code);
+            
+            if (isValid) {
+                // Activer l'accès Premium
+                USER_SESSION.isPremium = true;
+                USER_SESSION.isPendingVerification = false;
+                // Expiration dans 30 jours
+                USER_SESSION.subscriptionExpiry = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+                
+                updateUser(USER_SESSION.email, {
+                    isPremium: true,
+                    isPendingVerification: false,
+                    subscriptionExpiry: USER_SESSION.subscriptionExpiry
+                });
+                saveSession(USER_SESSION);
+                updateDashboardUI();
+                
+                showToast("🎉 Félicitations ! Votre accès Premium VIP a été activé avec succès.", "success");
+            } else {
+                showToast("❌ Code d'activation incorrect. Veuillez vérifier auprès de l'administrateur.", "danger");
+            }
         });
     }
 

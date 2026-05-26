@@ -1377,6 +1377,32 @@
                                         </div>
                                     </div>
 
+                                    <div id="subscription-pending-zone" class="hidden">
+                                        <h4 class="mb-05">⏳ Validation en cours</h4>
+                                        <p class="text-sm text-muted mb-1">
+                                            Votre paiement de 5 000 FCFA est en cours de traitement. 
+                                            Veuillez patienter environ <strong>15 minutes</strong> le temps que l'administrateur valide votre transaction.
+                                         </p>
+                                         <p class="text-sm text-muted mb-1">
+                                            Un code d'activation vous sera envoyé. Pour accélérer le traitement, envoyez votre reçu ou notifiez l'administrateur directement :
+                                         </p>
+                                         
+                                         <a href="#" target="_blank" class="btn btn-wave-pay w-full mb-15" id="btn-notify-whatsapp" style="text-decoration: none;">
+                                             <svg class="wave-svg" viewBox="0 0 100 100" style="width: 24px; height: 24px; fill: white; flex-shrink: 0; display: inline-block; vertical-align: middle;">
+                                                 <circle cx="50" cy="50" r="50" fill="#25d366"/>
+                                                 <path d="M50,20 C33,20 20,33 20,50 C20,56 22,62 25,67 L21,80 L35,76 C39,79 45,80 50,80 C67,80 80,67 80,50 C80,33 67,20 50,20 Z M64,61 C63,64 59,65 56,64 C52,63 46,59 41,54 C36,49 32,43 31,39 C30,36 31,32 34,31 C35,30 36,30 36,31 L39,36 C40,37 40,38 39,39 L37,41 C38,43 40,46 43,49 C46,52 49,54 51,55 L53,53 C54,52 55,52 56,53 L61,56 C62,57 62,58 62,59 C62,60 64,61 64,61 Z" fill="#ffffff"/>
+                                             </svg>
+                                             <span style="vertical-align: middle; margin-left: 8px;">Notifier sur WhatsApp (+221 78 479 98 82)</span>
+                                         </a>
+                                         
+                                         <div class="form-group mb-1" style="margin-top: 15px;">
+                                             <label class="form-label text-sm text-muted">Saisir le code d'activation reçu :</label>
+                                             <div style="display: flex; gap: 8px; margin-top: 5px;">
+                                                 <input type="text" id="activation-code-input" class="form-control" placeholder="Ex: 123456" style="flex: 1; text-align: center; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">
+                                                 <button type="button" class="btn btn-primary" id="btn-submit-activation-code">Valider</button>
+                                             </div>
+                                         </div>
+                                    </div>
                                     <!-- Gardons un bouton discret pour expirer l'abonnement en mode démo -->
                                     <div class="mt-2 text-right">
                                         <button class="btn btn-text text-xs text-muted" id="btn-simulate-expire">
