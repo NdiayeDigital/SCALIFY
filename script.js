@@ -65,7 +65,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-11",
         name: "Baskets Légères & Respirantes - Style 2026",
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hce5a2a92a23149deb5ca5ce0c71263bfE.jpg",
         buyPrice: 2700,
         transportCost: 1500,
         localFees: 1500,
@@ -89,7 +89,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-12",
         name: "Genouillères de Protection Rembourrées (Paire)",
-        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hde9b4a7df450428daa554e0f22b6894bQ.jpg",
         buyPrice: 720,
         transportCost: 500,
         localFees: 1500,
@@ -113,7 +113,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-13",
         name: "Stabilisateur de Caméra Gimbal FeiyuTech",
-        image: "https://images.unsplash.com/photo-1584438784894-089d6a128f3e?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hf84a21ef01f044c582a62cfad42a1651e.jpg",
         buyPrice: 15000,
         transportCost: 3500,
         localFees: 2500,
@@ -137,7 +137,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-14",
         name: "Mini Power Bank Capsule sans Fil",
-        image: "https://images.unsplash.com/photo-1609592424087-3e1140026dbd?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hbd869e6222354738aeb293f4208d61cdV.jpg",
         buyPrice: 1200,
         transportCost: 800,
         localFees: 1500,
@@ -161,7 +161,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-15",
         name: "Tapis Masseur de Pieds EMS Intelligent",
-        image: "https://images.unsplash.com/photo-1519823551278-64ac9283ca44?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/H74bc67afZRKSdYF.jpg",
         buyPrice: 900,
         transportCost: 700,
         localFees: 1500,
@@ -185,7 +185,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-9",
         name: "Masseur de Cou Vibrant 3 Têtes",
-        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hbd869e6222354738aeb293f4208d61cdB.jpg",
         buyPrice: 660,
         transportCost: 600,
         localFees: 1500,
@@ -209,7 +209,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-10",
         name: "Entraîneur de Cuisses Thigh Master Ajustable",
-        image: "https://images.unsplash.com/photo-1434608519344-49d77a699e1d?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/H452567af8st3BqC.jpg",
         buyPrice: 1080,
         transportCost: 800,
         localFees: 1500,
@@ -233,7 +233,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-6",
         name: "Huile de Batana Organique - Repousse Cheveux",
-        image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hdc10a8d4b3b24f5a9e88d086a0ab473bS.jpg",
         buyPrice: 900,
         transportCost: 600,
         localFees: 1500,
@@ -257,7 +257,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-7",
         name: "Patchs Anti-Points Noirs pour le Nez",
-        image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/H5a4a21ef01f044c582a62cfad42a1651f.jpg",
         buyPrice: 600,
         transportCost: 400,
         localFees: 1500,
@@ -281,7 +281,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-8",
         name: "Sérum Visage au Curcuma & Miel",
-        image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/H5c5a2a92a23149deb5ca5ce0c71263bfN.jpg",
         buyPrice: 720,
         transportCost: 500,
         localFees: 1500,
@@ -305,7 +305,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-1",
         name: "Lunettes Cat-Eye Photochromiques Partagas",
-        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/H5c8c6a51d8d34346adbe79f170e7e17eG.jpg",
         buyPrice: 720,
         transportCost: 800,
         localFees: 1500,
@@ -329,7 +329,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-2",
         name: "Coupe-Légumes Multifonction 16-en-1",
-        image: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hda53e4b09ff844f2bb7327ad74cb4db47.jpg",
         buyPrice: 1500,
         transportCost: 1500,
         localFees: 1500,
@@ -353,7 +353,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-3",
         name: "Masque Visage Peeling Purifiant - 75ml",
-        image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/H55a40a8df4564c7ea4ff86b89698d28e7.jpg",
         buyPrice: 480,
         transportCost: 500,
         localFees: 1500,
@@ -377,7 +377,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-4",
         name: "Éplucheur & Grattoir d'Écailles de Poisson",
-        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/Hda0f4c39f04149db82a3c9a6a815a511w.jpg",
         buyPrice: 240,
         transportCost: 400,
         localFees: 1000,
@@ -401,7 +401,7 @@ const TRENDING_PRODUCTS = [
     {
         id: "prod-ali-5",
         name: "Correcteur de Posture Lumbal & Dos",
-        image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&q=80",
+        image: "https://ae01.alicdn.com/kf/H0626a575a7464016a4959db23547b74e6.jpg",
         buyPrice: 900,
         transportCost: 700,
         localFees: 1500,
