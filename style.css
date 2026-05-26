@@ -558,6 +558,20 @@ select:focus {
     letter-spacing: -0.02em;
 }
 
+.main-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.auth-logo .main-logo-img {
+    height: 60px;
+}
+
+.sidebar-header .main-logo-img {
+    height: 35px;
+}
+
 .nav-menu {
     display: flex;
     gap: 30px;
