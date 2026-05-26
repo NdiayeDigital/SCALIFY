@@ -559,17 +559,17 @@ select:focus {
 }
 
 .main-logo-img {
-    height: 70px;
+    height: 100px;
     width: auto;
     object-fit: contain;
 }
 
 .auth-logo .main-logo-img {
-    height: 90px;
+    height: 120px;
 }
 
 .sidebar-header .main-logo-img {
-    height: 55px;
+    height: 70px;
 }
 
 .nav-menu {
