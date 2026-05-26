@@ -1982,6 +1982,13 @@ function setupPaymentSimulator() {
     // ── Bouton caché (Test : forcer l'expiration) ──────────
     const btnSimulateExpire = document.getElementById("btn-simulate-expire");
     if (btnSimulateExpire) {
+        const isLocal = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' || 
+                        window.location.hostname.startsWith('192.168.') ||
+                        window.location.hostname.startsWith('10.');
+        if (!isLocal) {
+            btnSimulateExpire.style.display = 'none';
+        }
         btnSimulateExpire.addEventListener("click", () => {
             USER_SESSION.isPremium = false;
             updateUser(USER_SESSION.email, { isPremium: false });
@@ -2338,33 +2345,51 @@ function setupChatbot() {
 // ========================================================
 //                 20. USER COMMENTS (ABONNEMENT)
 // ========================================================
-const COMMENTS_KEY = 'scalify_comments_v1';
+const COMMENTS_KEY = 'scalify_comments_v2';
+let currentCommentSlide = 0;
+let commentSlideInterval = null;
+
 function getComments() { try { return JSON.parse(localStorage.getItem(COMMENTS_KEY)) || getDefaultComments(); } catch(e) { return getDefaultComments(); } }
 function saveComments(c) { localStorage.setItem(COMMENTS_KEY, JSON.stringify(c)); }
 function getDefaultComments() {
     return [
-        { id: "c1", author: "Moussa Diop", date: "Il y a 2 heures", text: "La plateforme est incroyable. J'ai trouve mon premier produit gagnant grace au calculateur. Le dashboard est tres intuitif." },
-        { id: "c2", author: "Fatou Sow", date: "Il y a 5 heures", text: "L'outil IA pour les videos TikTok m'a fait gagner enormement de temps. L'abonnement VIP est tres vite rentabilise !" },
-        { id: "c3", author: "Ousmane Ndiaye", date: "Hier", text: "L'analyse des tendances locales est un game changer. Je sais exactement quand lancer mes campagnes pour la Tabaski maintenant." },
-        { id: "c4", author: "Aicha Fall", date: "Il y a 2 jours", text: "Le simulateur de marge m'a évité de perdre de l'argent sur un produit qui semblait rentable mais dont les frais de douane étaient trop élevés." },
-        { id: "c5", author: "Ibrahima Sy", date: "Il y a 3 jours", text: "Très bon outil. La génération de scripts de vente est très pertinente pour le marché sénégalais." },
-        { id: "c6", author: "Khady Gueye", date: "Il y a 1 semaine", text: "Je recommande fortement ! Le service client via le chatbot est réactif et les produits gagnants sont vraiment top." },
-        { id: "c7", author: "Cheikh Lo", date: "Il y a 2 semaines", text: "Le meilleur investissement pour mon business e-commerce cette année. Merci l'équipe !" }
+        { id: "c1", author: "Moussa Diop", date: "Il y a 2 heures", stars: 5, text: "La plateforme est incroyable. J'ai trouvé mon premier produit gagnant grâce au calculateur. Le dashboard est très intuitif pour un e-commerçant à Dakar." },
+        { id: "c2", author: "Fatou Sow", date: "Il y a 5 heures", stars: 5, text: "L'outil IA pour les vidéos TikTok m'a fait gagner énormément de temps. Les scripts en Wolof/Français cartonnent !" },
+        { id: "c3", author: "Ousmane Ndiaye", date: "Hier", stars: 5, text: "L'analyse des tendances locales est un game changer. Je sais exactement quand lancer mes campagnes pour la Tabaski maintenant." },
+        { id: "c4", author: "Aicha Fall", date: "Il y a 2 jours", stars: 5, text: "Le simulateur de marge m'a évité de perdre de l'argent sur un produit qui semblait rentable mais dont les frais de douane étaient trop élevés." },
+        { id: "c5", author: "Ibrahima Sy", date: "Il y a 3 jours", stars: 5, text: "Très bon outil. La génération de scripts de vente avec les hooks e-commerce est très pertinente pour le marché sénégalais." },
+        { id: "c6", author: "Khady Gueye", date: "Il y a 1 semaine", stars: 5, text: "Je recommande fortement ! Le service client via le chatbot et les fiches sourcing Alibaba complètes facilitent la vie." },
+        { id: "c7", author: "Cheikh Lo", date: "Il y a 2 semaines", stars: 5, text: "Le meilleur investissement pour mon business e-commerce cette année au Sénégal. Grâce aux modules de formation, j'ai tout compris sur la pub Facebook." },
+        { id: "c8", author: "Amadou Bamba", date: "Il y a 2 semaines", stars: 5, text: "Les calculs de frais GP et de logistique locale à Dakar sont hyper précis. Un gain de temps inestimable." },
+        { id: "c9", author: "Mariama Diallo", date: "Il y a 3 semaines", stars: 5, text: "Débutante en e-commerce, j'ai réalisé mes 10 premières ventes en 3 jours grâce aux produits gagnants du catalogue Scalify !" },
+        { id: "c10", author: "Omar Ka", date: "Il y a 1 mois", stars: 5, text: "J'ai configuré mon premier tunnel de vente en quelques clics. Les conseils de sourcing en Chine sont très précieux." },
+        { id: "c11", author: "Astou Diagne", date: "Il y a 1 mois", stars: 5, text: "Le fait de pouvoir payer l'abonnement VIP directement par Wave simplifie énormément les choses !" },
+        { id: "c12", author: "Modou Gueye", date: "Il y a 1 mois", stars: 5, text: "Scalify Ecom Académie est la meilleure formation e-commerce d'Afrique de l'Ouest. Les explications sont simples et hyper pratiques." }
     ];
 }
-
-let visibleCommentsCount = 3;
 
 function setupComments() {
     renderComments();
     
-    const loadMoreBtn = document.getElementById("btn-load-more-comments");
-    if(loadMoreBtn) {
-        loadMoreBtn.addEventListener("click", () => {
-            visibleCommentsCount += 3;
-            renderComments();
+    // Carousel navigation event listeners
+    const prevBtn = document.getElementById("btn-comments-prev");
+    const nextBtn = document.getElementById("btn-comments-next");
+    
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            navigateComments(-1);
+            resetCommentInterval();
         });
     }
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            navigateComments(1);
+            resetCommentInterval();
+        });
+    }
+    
+    // Auto-scroll initialization
+    startCommentInterval();
 
     const form = document.getElementById("comment-form");
     if(form) {
@@ -2382,58 +2407,110 @@ function setupComments() {
                     id: "c" + Date.now(),
                     author: USER_SESSION.name || "Abonne VIP",
                     date: "A l'instant",
+                    stars: 5,
                     text: text
                 });
                 saveComments(comments);
                 document.getElementById("comment-text").value = "";
+                currentCommentSlide = 0; // Go to the newly added comment!
                 renderComments();
-                showToast("Votre avis a ete publie avec succes !", "success");
+                resetCommentInterval();
+                showToast("Votre avis a été publié avec succès !", "success");
+            }
+        });
+    }
+}
+
+function startCommentInterval() {
+    if (commentSlideInterval) clearInterval(commentSlideInterval);
+    commentSlideInterval = setInterval(() => {
+        navigateComments(1);
+    }, 4000); // Transitions every 4 seconds!
+}
+
+function resetCommentInterval() {
+    startCommentInterval();
+}
+
+function navigateComments(direction) {
+    const comments = getComments();
+    if (comments.length === 0) return;
+    
+    currentCommentSlide = (currentCommentSlide + direction + comments.length) % comments.length;
+    updateCommentCarouselPosition();
+}
+
+function updateCommentCarouselPosition() {
+    const track = document.getElementById("comments-list");
+    if (!track) return;
+    track.style.transform = `translateX(-${currentCommentSlide * 100}%)`;
+    
+    // Update dots status
+    const dotsContainer = document.getElementById("comments-carousel-dots");
+    if (dotsContainer) {
+        const dots = dotsContainer.querySelectorAll(".carousel-dot");
+        dots.forEach((dot, index) => {
+            if (index === currentCommentSlide) {
+                dot.classList.add("active");
+            } else {
+                dot.classList.remove("active");
             }
         });
     }
 }
 
 function renderComments() {
-    const list = document.getElementById("comments-list");
-    const loadMoreBtn = document.getElementById("btn-load-more-comments");
-    if(!list) return;
+    const track = document.getElementById("comments-list");
+    const dotsContainer = document.getElementById("comments-carousel-dots");
+    if(!track) return;
     
     const comments = getComments();
-    list.innerHTML = "";
+    track.innerHTML = "";
+    if (dotsContainer) dotsContainer.innerHTML = "";
     
     if(comments.length === 0) {
-        list.innerHTML = "<p class='text-sm text-muted'>Aucun commentaire pour le moment. Soyez le premier !</p>";
-        if(loadMoreBtn) loadMoreBtn.classList.add("hidden");
+        track.innerHTML = "<p class='text-sm text-muted' style='width:100%; text-align:center;'>Aucun commentaire pour le moment. Soyez le premier !</p>";
         return;
     }
-
-    const visibleComments = comments.slice(0, visibleCommentsCount);
     
-    visibleComments.forEach(c => {
-        const div = document.createElement("div");
-        div.className = "comment-item";
-        div.innerHTML = `
-            <div class="comment-item-header">
-                <span class="comment-author">
-                    ${c.author} 
-                    ${(USER_SESSION.isAuthenticated && c.author === USER_SESSION.name) || c.author === "Abonne VIP" ? '<span class="text-xs text-muted font-normal ml-1">(Vous)</span>' : ''}
-                </span>
-                <span class="comment-date">${c.date}</span>
-            </div>
-            <div class="comment-body">${c.text}</div>
-        `;
-        list.appendChild(div);
-    });
-
-    if(loadMoreBtn) {
-        if(visibleCommentsCount < comments.length) {
-            loadMoreBtn.classList.remove("hidden");
-        } else {
-            loadMoreBtn.classList.add("hidden");
+    // Render slides
+    comments.forEach((c, index) => {
+        const slide = document.createElement("div");
+        slide.className = "comment-slide";
+        
+        // Stars rendering
+        let starsHtml = "";
+        const starCount = c.stars || 5;
+        for (let i = 0; i < starCount; i++) {
+            starsHtml += "★";
         }
-    }
+        
+        slide.innerHTML = `
+            <div class="comment-stars">${starsHtml}</div>
+            <p class="comment-text-content">"${c.text}"</p>
+            <div class="comment-user-info">
+                <span class="comment-author-name">
+                    ${c.author}
+                    ${(USER_SESSION.isAuthenticated && c.author === USER_SESSION.name) ? '<span class="text-xs text-muted font-normal">(Vous)</span>' : ''}
+                </span>
+                <span class="comment-user-role">Abonné VIP Scalify • ${c.date}</span>
+            </div>
+        `;
+        track.appendChild(slide);
+        
+        // Create indicator dot
+        if (dotsContainer) {
+            const dot = document.createElement("div");
+            dot.className = `carousel-dot ${index === currentCommentSlide ? 'active' : ''}`;
+            dot.addEventListener("click", () => {
+                currentCommentSlide = index;
+                updateCommentCarouselPosition();
+                resetCommentInterval();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    });
     
-    if(window.lucide) {
-        lucide.createIcons();
-    }
+    // Set track transform according to current comment slide
+    updateCommentCarouselPosition();
 }

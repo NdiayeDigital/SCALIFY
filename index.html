@@ -1430,13 +1430,17 @@
                                     <h3>Avis et Commentaires</h3>
                                 </div>
                                 <div class="card-body">
-                                    <div id="comments-list" class="comments-list mb-1">
-                                        <!-- Comments loaded via JS -->
+                                    <!-- Carousel Container for Premium User Reviews -->
+                                    <div class="carousel-container">
+                                        <button type="button" class="carousel-nav-btn prev" id="btn-comments-prev">&#10094;</button>
+                                        <div class="carousel-track-wrapper">
+                                            <div id="comments-list" class="comments-carousel-track">
+                                                <!-- Comments loaded as slides via JS -->
+                                            </div>
+                                        </div>
+                                        <button type="button" class="carousel-nav-btn next" id="btn-comments-next">&#10095;</button>
                                     </div>
-                                    <button type="button" id="btn-load-more-comments"
-                                        class="btn btn-secondary-outline w-full mb-15 hidden"
-                                        style="border-style:dashed;">Voir plus de commentaires <i
-                                            data-lucide="chevron-down" class="inline-icon"></i></button>
+                                    <div class="carousel-dots mb-15" id="comments-carousel-dots"></div>
                                     <form id="comment-form">
                                         <div class="form-group mb-1">
                                             <textarea id="comment-text" rows="3"
