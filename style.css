@@ -2720,3 +2720,25 @@ body.is-premium .menu-item-badge-pro {
 .btn-wave-pay svg {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
+
+/* Responsive 3-line product carousel on mobile */
+@media (max-width: 768px) {
+    #trending-products-grid {
+        display: grid !important;
+        grid-template-rows: repeat(3, auto) !important;
+        grid-template-columns: none !important;
+        grid-auto-flow: column !important;
+        grid-auto-columns: 280px !important; /* Largeur fixe de carte confortable sur mobile */
+        gap: 15px !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        padding-bottom: 20px !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
+    }
+    
+    #trending-products-grid .prod-card {
+        scroll-snap-align: start !important;
+        height: auto !important;
+    }
+}

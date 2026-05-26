@@ -972,9 +972,35 @@ function setupAuthFlow() {
         e.preventDefault();
         const name = document.getElementById("register-name").value.trim();
         const email = document.getElementById("register-email").value.trim().toLowerCase();
-        const phone = document.getElementById("register-phone").value.replace(/\s/g,'');
+        let phone = document.getElementById("register-phone").value.replace(/\s/g,'');
         const password = document.getElementById("register-password").value;
-        if (password.length < 8) { showToast("Le mot de passe doit contenir au moins 8 caracteres.", "danger"); return; }
+
+        // Normalisation du préfixe sénégalais si présent
+        if (phone.startsWith("+221")) phone = phone.slice(4);
+        else if (phone.startsWith("00221")) phone = phone.slice(5);
+        else if (phone.startsWith("221") && phone.length > 9) phone = phone.slice(3);
+
+        // Validation du numéro sénégalais (77, 76, 75, 70, 71 avec 9 chiffres au total)
+        const phoneRegex = /^(77|76|75|70|71)\d{7}$/;
+        if (!phoneRegex.test(phone)) {
+            showToast("Le numéro d'inscription doit être au format sénégalais valide (ex: 77XXXXXXX, 76XXXXXXX, 75XXXXXXX, 70XXXXXXX ou 71XXXXXXX).", "danger");
+            return;
+        }
+
+        // Validation du mot de passe (au moins 8 caractères, une lettre, un chiffre, et un caractère spécial)
+        const hasLetter = /[a-zA-Z]/.test(password);
+        const hasDigit = /[0-9]/.test(password);
+        const hasSpecial = /[^a-zA-Z0-9]/.test(password);
+
+        if (password.length < 8) {
+            showToast("Le mot de passe doit contenir au moins 8 caractères.", "danger");
+            return;
+        }
+        if (!hasLetter || !hasDigit || !hasSpecial) {
+            showToast("Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial (ex: @, #, $, !, etc.).", "danger");
+            return;
+        }
+
         // Uniqueness check
         if (findUserByEmail(email)) {
             showToast("Cette adresse email est deja utilisee. Veuillez vous connecter.", "danger");
@@ -1796,9 +1822,9 @@ function drawSvgSimulationChart(history, totalDays) {
 }
 
 // ========================================================
-//        8. PAIEMENT CINETPAY (SÉCURISÉ VIA BACKEND)
+//        8. PAIEMENT WAVE (SÉCURISÉ VIA BACKEND)
 // ========================================================
-// ⚠️ AUCUNE clé API, mot de passe ou secret CinetPay
+// ⚠️ AUCUNE clé API, mot de passe ou secret Wave
 //    n'est présent dans ce fichier JavaScript frontend.
 //    Toutes les opérations sensibles passent par le serveur
 //    Express (/api/payment/*) qui détient les credentials.
@@ -1808,7 +1834,7 @@ function setupPaymentSimulator() {
     // Close payment modal
     document.getElementById("btn-close-payment-modal").addEventListener("click", closePaymentModal);
     
-    // ── Bouton principal : Payer via CinetPay ──────────────
+    // ── Bouton principal : Payer via Wave ──────────────
     document.getElementById("btn-confirm-payment").addEventListener("click", async () => {
         const phone = document.getElementById("payment-phone-input").value.trim();
         const accessKeyInput = document.getElementById("payment-access-key");
@@ -1839,7 +1865,7 @@ function setupPaymentSimulator() {
         statusText.textContent = "Connexion sécurisée au serveur de paiement...";
 
         try {
-            // ── Appeler NOTRE backend (pas CinetPay directement) ──
+            // ── Appeler NOTRE backend (pas Wave directement) ──
             // Le backend injecte les clés API de son côté
             const response = await fetch('/api/payment/initialize', {
                 method: 'POST',
@@ -1858,10 +1884,10 @@ function setupPaymentSimulator() {
                 // Sauvegarder l'ID de transaction pour vérification au retour
                 localStorage.setItem('scalify_pending_tx', data.transaction_id);
                 
-                statusText.textContent = "Redirection vers CinetPay...";
-                showToast("Redirection vers la page de paiement sécurisée CinetPay...", "success");
+                statusText.textContent = "Redirection vers Wave...";
+                showToast("Redirection vers la page de paiement sécurisée Wave...", "success");
                 
-                // Rediriger vers la page de paiement CinetPay
+                // Rediriger vers la page de paiement Wave
                 setTimeout(() => {
                     window.location.href = data.payment_url;
                 }, 800);
@@ -1870,7 +1896,7 @@ function setupPaymentSimulator() {
                 statusZone.classList.add("hidden");
                 showToast(data.message || "Erreur lors de l'initialisation du paiement.", "danger");
                 btn.disabled = false;
-                btn.innerHTML = '<i data-lucide="lock" class="inline-icon"></i> Payer 5 000 FCFA via CinetPay';
+                btn.innerHTML = '<i data-lucide="lock" class="inline-icon"></i> Payer 5 000 FCFA via Wave';
                 if (window.lucide) lucide.createIcons();
             }
         } catch (error) {
@@ -1879,7 +1905,7 @@ function setupPaymentSimulator() {
             console.error("Erreur paiement:", error);
             showToast("Impossible de contacter le serveur de paiement. Vérifiez votre connexion.", "danger");
             btn.disabled = false;
-            btn.innerHTML = '<i data-lucide="lock" class="inline-icon"></i> Payer 5 000 FCFA via CinetPay';
+            btn.innerHTML = '<i data-lucide="lock" class="inline-icon"></i> Payer 5 000 FCFA via Wave';
             if (window.lucide) lucide.createIcons();
         }
     });
@@ -2023,12 +2049,12 @@ function setupPaymentSimulator() {
         });
     }
 
-    // ── Vérifier si l'utilisateur revient d'un paiement CinetPay ──
+    // ── Vérifier si l'utilisateur revient d'un paiement Wave ──
     checkPaymentReturn();
 }
 
-// ── Vérification du retour de paiement CinetPay ────────────
-// Quand CinetPay redirige l'utilisateur vers notre site après paiement,
+// ── Vérification du retour de paiement Wave ────────────
+// Quand Wave redirige l'utilisateur vers notre site après paiement,
 // on détecte le retour et on active l'accès premium.
 function checkPaymentReturn() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -2069,7 +2095,7 @@ function openPaymentModal() {
     // Reset le statut
     const btn = document.getElementById("btn-confirm-payment");
     btn.disabled = false;
-    btn.innerHTML = '<i data-lucide="lock" class="inline-icon"></i> Payer 5 000 FCFA via CinetPay';
+    btn.innerHTML = '<i data-lucide="lock" class="inline-icon"></i> Payer 5 000 FCFA via Wave';
     document.getElementById("payment-status-zone").classList.add("hidden");
     if (window.lucide) lucide.createIcons();
 }
