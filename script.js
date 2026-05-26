@@ -637,6 +637,10 @@ function updateDashboardUI() {
         ovSub.className = "metric-value text-success";
         accSub.textContent = "Payé (Actif)";
         accSub.className = "text-success font-bold";
+        
+        // Cacher le bouton d'activation si déjà payé
+        const subActionZone = document.getElementById("subscription-action-zone");
+        if (subActionZone) subActionZone.classList.add("hidden");
     } else {
         subBadge.textContent = "Freemium Inactif";
         subBadge.className = "badge badge-warning";
@@ -646,6 +650,10 @@ function updateDashboardUI() {
         ovSub.className = "metric-value text-warning";
         accSub.textContent = "Non payé (Inactif)";
         accSub.className = "text-warning font-bold";
+
+        // Afficher le bouton d'activation si non payé
+        const subActionZone = document.getElementById("subscription-action-zone");
+        if (subActionZone) subActionZone.classList.remove("hidden");
     }
 
     // Dynamic calculations for Overview Dashboard
@@ -1367,24 +1375,25 @@ function setupPaymentSimulator() {
         }
     });
 
-    // ── Boutons de test dans l'onglet Compte ───────────────
-    document.getElementById("btn-simulate-pay-wave").addEventListener("click", () => {
-        // En production, ce bouton lancerait aussi openPaymentModal()
-        // Pour le dev, on garde la simulation locale
-        USER_SESSION.isPremium = true;
-        USER_SESSION.score += 200;
-        updateUser(USER_SESSION.email, { isPremium: true, score: USER_SESSION.score });
-        saveSession(USER_SESSION);
-        showToast("Paiement simulé : abonnement activé. (Mode test)", "success");
-        updateDashboardUI();
-    });
-    document.getElementById("btn-simulate-expire").addEventListener("click", () => {
-        USER_SESSION.isPremium = false;
-        updateUser(USER_SESSION.email, { isPremium: false });
-        saveSession(USER_SESSION);
-        showToast("Abonnement expiré par simulation. (Mode test)", "warning");
-        updateDashboardUI();
-    });
+    // ── Bouton d'activation d'abonnement (Onglet Compte) ───
+    const btnActivateSub = document.getElementById("btn-activate-subscription");
+    if (btnActivateSub) {
+        btnActivateSub.addEventListener("click", () => {
+            openPaymentModal();
+        });
+    }
+
+    // ── Bouton caché (Test : forcer l'expiration) ──────────
+    const btnSimulateExpire = document.getElementById("btn-simulate-expire");
+    if (btnSimulateExpire) {
+        btnSimulateExpire.addEventListener("click", () => {
+            USER_SESSION.isPremium = false;
+            updateUser(USER_SESSION.email, { isPremium: false });
+            saveSession(USER_SESSION);
+            showToast("Abonnement expiré par simulation. (Mode test)", "warning");
+            updateDashboardUI();
+        });
+    }
 
     // ── Décisions post-simulation (lancement / déclin) ─────
     const btnLaunch = document.getElementById("btn-sim-launch");

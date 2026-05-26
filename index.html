@@ -1361,18 +1361,22 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="mb-05">Simulateur de Paiement Local</h4>
-                                    <p class="text-sm text-muted mb-1">Simulez le paiement ou l'expiration de votre
-                                        abonnement pour tester le comportement de la plateforme.</p>
+                                    <div id="subscription-action-zone">
+                                        <h4 class="mb-05">Gérer mon accès</h4>
+                                        <p class="text-sm text-muted mb-1">Pour accéder à l'Académie, au simulateur financier complet et au générateur IA, vous devez avoir un abonnement actif.</p>
+                                        
+                                        <div class="grid gap-1">
+                                            <button class="btn btn-primary w-full"
+                                                id="btn-activate-subscription">
+                                                <i data-lucide="lock" class="inline-icon"></i> Activer / Payer 5 000 FCFA
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                    <div class="grid grid-2 gap-1">
-                                        <button class="btn btn-secondary-outline text-success border-success"
-                                            id="btn-simulate-pay-wave">
-                                            ⚡ Activer / Payer 5000 F
-                                        </button>
-                                        <button class="btn btn-secondary-outline text-danger border-danger"
-                                            id="btn-simulate-expire">
-                                            ❌ Expirer l'abonnement
+                                    <!-- Gardons un bouton discret pour expirer l'abonnement en mode démo -->
+                                    <div class="mt-2 text-right">
+                                        <button class="btn btn-text text-xs text-muted" id="btn-simulate-expire">
+                                            (Test : Forcer l'expiration)
                                         </button>
                                     </div>
                                 </div>
