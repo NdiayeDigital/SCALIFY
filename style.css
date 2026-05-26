@@ -2809,25 +2809,73 @@ body.is-premium .menu-item-badge-pro {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
+/* Safety Lock to prevent any horizontal scroll on body */
+html, body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+/* Z-Index Priority Levels (Ensures navigation / headers are always in front) */
+.nav-header {
+    z-index: 10000 !important; /* Always top on landing page */
+}
+.mobile-nav {
+    z-index: 9999 !important; /* Mobile dropdown list always in front */
+}
+.app-header {
+    z-index: 9998 !important; /* Dashboard header always on top of page contents */
+}
+.app-sidebar {
+    z-index: 10005 !important; /* Sidebar overlay always in front on mobile toggle */
+}
+.toast-container {
+    z-index: 20005 !important; /* Toasts always on very top */
+}
+
 /* Responsive 3-line product carousel on mobile */
 @media (max-width: 768px) {
+    #tab-products {
+        max-width: 100% !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
     #trending-products-grid {
         display: grid !important;
         grid-template-rows: repeat(3, auto) !important;
         grid-template-columns: none !important;
         grid-auto-flow: column !important;
-        grid-auto-columns: 280px !important; /* Largeur fixe de carte confortable sur mobile */
+        grid-auto-columns: 280px !important; /* Comfortable fixed card width on mobile */
         gap: 15px !important;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory !important;
         padding-bottom: 20px !important;
         -webkit-overflow-scrolling: touch !important;
         scroll-behavior: smooth !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
     
     #trending-products-grid .prod-card {
         scroll-snap-align: start !important;
         height: auto !important;
+    }
+
+    /* Prevent customer reviews carousel from leaking */
+    .carousel-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+    }
+
+    .carousel-track-wrapper {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 }
 
