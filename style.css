@@ -2830,3 +2830,104 @@ body.is-premium .menu-item-badge-pro {
         height: auto !important;
     }
 }
+
+/* Polissage global de la responsivité mobile sur smartphone */
+@media (max-width: 768px) {
+    /* Spacings & Containers */
+    .app-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .app-main {
+        padding-top: 60px; /* Espace pour le header mobile */
+    }
+
+    .app-content-container {
+        padding: 10px !important;
+    }
+
+    /* Modals & Popups */
+    .modal-box {
+        width: 92% !important;
+        max-width: 420px !important;
+        padding: 20px !important;
+        border-radius: var(--radius-lg) !important;
+    }
+
+    /* Forms */
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+        font-size: 16px !important; /* Évite le zoom automatique sur iOS */
+    }
+
+    /* Grids & Cards */
+    .card {
+        padding: 15px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .card-header h3 {
+        font-size: 1.1rem !important;
+    }
+
+    /* Hero section et Landing Page mobile */
+    .hero-section {
+        padding: 80px 10px 40px 10px !important;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .hero-actions .btn {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    /* Chatbot Responsiveness */
+    .chatbot-panel {
+        width: calc(100vw - 20px) !important;
+        right: 10px !important;
+        left: 10px !important;
+        bottom: 80px !important;
+        height: 450px !important;
+        max-height: 70vh !important;
+    }
+
+    /* Google Drive modules buttons */
+    .chapter-item {
+        padding: 12px !important;
+    }
+
+    .chapter-item h4 {
+        font-size: 0.95rem !important;
+    }
+
+    /* Dimensions Grid in Calculator (keep inline instead of vertical wrap) */
+    #boat-inputs .grid-3 {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+    }
+
+    /* Metric Cards Wrap */
+    .calc-main-stats.grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Table responsive wrappers */
+    .table-container,
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Logos */
+    .main-logo-img {
+        height: 75px !important; /* Ajustement pour les petits en-têtes mobiles */
+    }
+}
