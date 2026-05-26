@@ -642,6 +642,17 @@ function updateDashboardUI() {
     const levelEl = document.getElementById("user-level-badge");
     if (levelEl) levelEl.textContent = `Niveau ${level}`;
 
+    // Vérification de l'expiration de l'abonnement
+    if (USER_SESSION.isPremium && USER_SESSION.subscriptionExpiry) {
+        if (new Date().getTime() > USER_SESSION.subscriptionExpiry) {
+            USER_SESSION.isPremium = false;
+            USER_SESSION.subscriptionExpiry = null;
+            updateUser(USER_SESSION.email, { isPremium: false, subscriptionExpiry: null });
+            saveSession(USER_SESSION);
+            showToast("Votre abonnement d'un mois a expiré. Veuillez le renouveler.", "warning");
+        }
+    }
+
     // Premium logic
     const subBadge = document.getElementById("user-sub-badge");
     const subPill = document.getElementById("header-sub-pill");
@@ -655,7 +666,12 @@ function updateDashboardUI() {
         subPill.className = "badge badge-success";
         ovSub.textContent = "Premium Actif";
         ovSub.className = "metric-value text-success";
-        accSub.textContent = "Payé (Actif)";
+        let expiryText = "Payé (Actif)";
+        if (USER_SESSION.subscriptionExpiry) {
+            const expiryDate = new Date(USER_SESSION.subscriptionExpiry).toLocaleDateString('fr-FR');
+            expiryText = `Payé (Jusqu'au ${expiryDate})`;
+        }
+        accSub.textContent = expiryText;
         accSub.className = "text-success font-bold";
         
         // Cacher le bouton d'activation si déjà payé
@@ -1507,11 +1523,17 @@ async function checkPaymentReturn() {
             if (data.success && data.is_paid) {
                 // Paiement confirmé par CinetPay via notre backend !
                 USER_SESSION.isPremium = true;
+                // Expiration dans 30 jours
+                USER_SESSION.subscriptionExpiry = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
                 USER_SESSION.score += 200;
-                updateUser(USER_SESSION.email, { isPremium: true, score: USER_SESSION.score });
+                updateUser(USER_SESSION.email, { 
+                    isPremium: true, 
+                    subscriptionExpiry: USER_SESSION.subscriptionExpiry,
+                    score: USER_SESSION.score 
+                });
                 saveSession(USER_SESSION);
                 localStorage.removeItem('scalify_pending_tx');
-                showToast("✅ Paiement confirmé ! Votre abonnement VIP est maintenant actif.", "success");
+                showToast("✅ Paiement confirmé ! Votre abonnement VIP est actif pour 1 mois.", "success");
                 updateDashboardUI();
                 
                 // Afficher le dashboard si l'utilisateur est connecté
