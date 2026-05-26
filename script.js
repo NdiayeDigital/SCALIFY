@@ -63,6 +63,126 @@ function generateOTP() { return Math.floor(100000 + Math.random() * 900000).toSt
 // 1. DATA STORES (Sourcing, Products, and IA Models)
 const TRENDING_PRODUCTS = [
     {
+        id: "prod-ali-1",
+        name: "Lunettes Cat-Eye Photochromiques Partagas",
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80",
+        buyPrice: 720,
+        transportCost: 800,
+        localFees: 1500,
+        recommendedSalePrice: 5040,
+        competitors: "Faible",
+        status: "viral",
+        score: 9.6,
+        category: "Mode & Beauté",
+        sourcingLink: "https://www.alibaba.com/product-detail/Partagas-Fashion-Photochromic-Photogray-Cat-Eye_1601444231796.html?spm=a2700.product_home_fy25.just_for_you.5.2ce2299a1tXt4q",
+        description: "Lunettes de soleil cat-eye intelligentes qui changent de teinte selon la luminosité du soleil. Un accessoire ultra tendance à Dakar.",
+        hooks: [
+            "😎 Regarde comment mes lunettes changent de couleur dès que je sors sous le soleil de Dakar !",
+            "POV: Tu as une seule paire de lunettes pour l'intérieur et l'extérieur grâce à la technologie photochromique.",
+            "L'accessoire de mode indispensable et fonctionnel que tout le monde s'arrache au Sénégal."
+        ],
+        scripts: [
+            "【Hook】: Montre les lunettes transparentes à l'intérieur, puis marche vers le soleil et montre-les devenir sombres.\n【Corps】: 'Ces lunettes cat-eye Partagas protègent tes yeux de la lumière bleue des écrans et se teintent automatiquement en lunettes de soleil à l'extérieur. Plus besoin d'avoir deux paires !'\n【Appel à l'action】: 'Paiement à la livraison par Wave. Commande vite la tienne !'"
+        ],
+        hashtags: ["#LunettesDakar", "#ModeSenegal", "#AccessoiresDakar", "#DakarGalsen", "#DakarPlateau"]
+    },
+    {
+        id: "prod-ali-2",
+        name: "Coupe-Légumes Multifonction 16-en-1",
+        image: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=500&q=80",
+        buyPrice: 1500,
+        transportCost: 1500,
+        localFees: 1500,
+        recommendedSalePrice: 10500,
+        competitors: "Moyen",
+        status: "viral",
+        score: 9.3,
+        category: "Cuisine & Maison",
+        sourcingLink: "https://www.alibaba.com/product-detail/New-16-in-1-Multifunctional-Vegetable_1601268337055.html?spm=a2700.product_home_fy25.just_for_you.12.2ce2299a1tXt4q",
+        description: "Hachoir, trancheur et coupe-légumes professionnel tout-en-un avec 16 accessoires pour préparer les repas en quelques secondes.",
+        hooks: [
+            "🧅 Tu passes trop de temps à couper les oignons pour ton Thiéboudienne ? Regarde ce gadget !",
+            "⚠️ Ne te coupe plus jamais les doigts en cuisine grâce à cette sécurité ultime.",
+            "POV: Tu prépares toutes tes salades et légumes de la semaine en moins de 5 minutes chrono."
+        ],
+        scripts: [
+            "【Hook】: Coupe un oignon entier en petits cubes parfaits en un seul geste rapide.\n【Corps】: 'Ce coupe-légumes 16-en-1 révolutionne ta cuisine. Avec ses grilles interchangeables, tu peux râper, trancher, hacher et désinfecter tes légumes en un temps record. Facile à laver et robuste.'\n【Appel à l'action】: 'Livraison rapide partout au Sénégal. Clique pour en profiter !'"
+        ],
+        hashtags: ["#CuisineSenegalaise", "#MaisonDakar", "#AstucesCuisine", "#Thiéboudienne", "#FemmeSenegalaise"]
+    },
+    {
+        id: "prod-ali-3",
+        name: "Masque Visage Peeling Purifiant - 75ml",
+        image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80",
+        buyPrice: 480,
+        transportCost: 500,
+        localFees: 1500,
+        recommendedSalePrice: 3360,
+        competitors: "Faible",
+        status: "stable",
+        score: 9.1,
+        category: "Beauté & Soins",
+        sourcingLink: "https://www.alibaba.com/product-detail/Hot-Sales-75ml-Face-Care-Peel_1601536863418.html?spm=a2700.product_home_fy25.just_for_you.18.2ce2299a1tXt4q",
+        description: "Masque peeling visage clarifiant pour éliminer les impuretés, excès de sébum et points noirs en douceur.",
+        hooks: [
+            "✨ Dis adieu aux points noirs et retrouve une peau de bébé en 10 minutes !",
+            "Le secret skincare le mieux gardé pour éliminer l'excès de sébum causé par la chaleur de Dakar.",
+            "POV: Tu fais ton soin visage pro chez toi sans payer les instituts de beauté."
+        ],
+        scripts: [
+            "【Hook】: Retire délicatement le masque pelliculable noir d'une seule traite pour montrer les impuretés retirées.\n【Corps】: 'Ce masque peeling 75ml nettoie tes pores en profondeur, hydrate ta peau et élimine les boutons et imperfections. Idéal pour hommes et femmes au Sénégal.'\n【Appel à l'action】: 'Acheter maintenant, livraison gratuite à Dakar aujourd'hui !'"
+        ],
+        hashtags: ["#SkincareSenegal", "#BeauteDakar", "#SoinsVisageDakar", "#GalsenBeauty", "#SantePeau"]
+    },
+    {
+        id: "prod-ali-4",
+        name: "Éplucheur & Grattoir d'Écailles de Poisson",
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&q=80",
+        buyPrice: 240,
+        transportCost: 400,
+        localFees: 1000,
+        recommendedSalePrice: 1680,
+        competitors: "Faible",
+        status: "stable",
+        score: 8.8,
+        category: "Cuisine & Maison",
+        sourcingLink: "https://www.alibaba.com/product-detail/Manual-Scale-Planer-Lid-Creative-Kitchen_1600666638462.html?spm=a2700.product_home_fy25.just_for_you.17.2ce2299a1tXt4q",
+        description: "Grattoir manuel d'écailles de poisson avec réservoir intégré pour éviter de projeter les écailles dans toute la cuisine.",
+        hooks: [
+            "🐟 Tu aimes préparer le poisson frais du Port de Dakar mais tu détestes nettoyer les écailles partout ?",
+            "L'ustensile magique qui récupère 100% des écailles de poisson directement dans son couvercle !",
+            "POV: Nettoyer ton poisson n'a jamais été aussi propre et rapide."
+        ],
+        scripts: [
+            "【Hook】: Gratte un poisson en montrant les écailles qui s'accumulent proprement sous le couvercle transparent.\n【Corps】: 'Ce grattoir à écailles manuel est doté d'un réservoir malin. Fini les écailles collées au mur et sur tes vêtements. En plastique solide et lame en acier inoxydable.'\n【Appel à l'action】: 'Seulement 1680 FCFA ! Réserve le tien en cliquant ici.'"
+        ],
+        hashtags: ["#PoissonDakar", "#ThiéboudienneDakar", "#CuisinePropre", "#DakarFood", "#MarcheSoumbedioune"]
+    },
+    {
+        id: "prod-ali-5",
+        name: "Correcteur de Posture Lumbal & Dos",
+        image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&q=80",
+        buyPrice: 900,
+        transportCost: 700,
+        localFees: 1500,
+        recommendedSalePrice: 6300,
+        competitors: "Moyen",
+        status: "viral",
+        score: 9.4,
+        category: "Sport & Santé",
+        sourcingLink: "https://www.alibaba.com/product-detail/Adjustable-Anti-Hunchback-Belt-Spine-Lumbar_1601579224573.html?spm=a2700.product_home_fy25.just_for_you.33.2ce2299a1tXt4q",
+        description: "Ceinture de correction posturale réglable pour aligner les épaules, le cou et le dos afin de réduire le dos voûté.",
+        hooks: [
+            "🧍‍♂️ Tiens-toi enfin droit et élimine définitivement ton mal de dos !",
+            "⚠️ Si tu es assis plus de 6 heures par jour au bureau, tu as besoin de ceci.",
+            "POV: Tu corriges ton dos voûté et gagnes 2 cm de posture en l'utilisant 20 min par jour."
+        ],
+        scripts: [
+            "【Hook】: Montre une personne voûtée sur son ordinateur, puis qui met le correcteur et se redresse immédiatement.\n【Corps】: 'Ce correcteur de posture ajustable s'adapte sous tes vêtements. Il force tes épaules à rester alignées et prévient les douleurs lombaires et cervicales au quotidien.'\n【Appel à l'action】: 'Livraison express à Dakar et partout au Sénégal. Commande le tien !'"
+        ],
+        hashtags: ["#SanteDakar #MalDeDos #BienEtreSenegal #DakarBureau #CorrecteurPosture"]
+    },
+    {
         id: "prod-1",
         name: "Mini Blender Portable Rechargeable",
         image: "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=500&q=80",
@@ -916,6 +1036,9 @@ function renderTrendingProducts() {
 
                 <div class="prod-actions">
                     <button class="btn btn-primary btn-sm" onclick="triggerSimForProduct('${prod.id}')">Simuler Profit</button>
+                    <a href="${prod.sourcingLink || 'https://www.alibaba.com'}" target="_blank" class="btn btn-secondary-outline btn-sm text-center" style="display: flex; align-items: center; justify-content: center; text-decoration: none; gap: 6px; font-weight: 500;">
+                        <i data-lucide="shopping-bag" class="inline-icon"></i> Sourcing Alibaba
+                    </a>
                     <button class="btn btn-secondary btn-sm" onclick="triggerMktForProduct('${prod.id}')"><i data-lucide="bot" class="inline-icon"></i> Générer Marketing IA</button>
                 </div>
             </div>
