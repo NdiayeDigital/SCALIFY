@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCALIFY - Trouvez des produits rentables et lancez votre business e-commerce avec l'IA</title>
+    <meta name="description"
+        content="SCALIFY est la plateforme SaaS ultime pour les e-commerçants en Afrique. Analysez les produits gagnants, calculez vos marges, et générez votre marketing avec l'IA.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ========================================== -->
+    <!--          1. SITE PUBLIC (LANDING)          -->
+    <!-- ========================================== -->
+    <div id="landing-page" class="view-active">
+        <!-- Navigation Header -->
+        <header class="main-header">
+            <div class="container header-container">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">SCALIFY</span>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#features">Fonctionnalités</a>
+                    <a href="#problems">Pourquoi nous ?</a>
+                    <a href="#pricing">Tarifs</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+                <div class="nav-actions">
+                    <button class="btn btn-text" id="btn-login-nav">Se connecter</button>
+                    <button class="btn btn-primary" id="btn-register-nav">S'inscrire</button>
+                </div>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="#features" class="mobile-nav-link">Fonctionnalités</a>
+            <a href="#problems" class="mobile-nav-link">Pourquoi nous ?</a>
+            <a href="#pricing" class="mobile-nav-link">Tarifs</a>
+            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <div class="mobile-nav-actions">
+                <button class="btn btn-text w-full" id="btn-login-mob">Se connecter</button>
+                <button class="btn btn-primary w-full" id="btn-register-mob">S'inscrire</button>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container grid grid-2">
+                <div class="hero-content">
+                    <span class="badge badge-accent">🚀 V2 LIVE : Assistant IA E-commerce</span>
+                    <h1>Trouvez des produits rentables et lancez votre business e-commerce avec l’IA</h1>
+                    <p class="hero-description">
+                        SCALIFY analyse les produits tendances, calcule vos profits réels (achat, transport, douane) et
+                        génère votre marketing automatiquement pour cartonner au Sénégal et en Afrique.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg" id="hero-btn-register">Créer mon compte</button>
+                        <button class="btn btn-secondary btn-lg" id="hero-btn-demo">Voir la démo interactive</button>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="trust-avatars">
+                            <span class="avatar">🇸🇳</span>
+                            <span class="avatar">🇨🇮</span>
+                            <span class="avatar">📊</span>
+                        </div>
+                        <p>Rejoint par <strong>+1,200 e-commerçants</strong> à Dakar, Abidjan et Bamako.</p>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="dashboard-mockup">
+                        <div class="mockup-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <div class="mockup-title">scalify.app/dashboard</div>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-item active"></div>
+                                <div class="mockup-item"></div>
+                                <div class="mockup-item"></div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="mockup-row flex justify-between align-center mb-1">
+                                    <div class="mockup-title-lg">Produit Tendance</div>
+                                    <span class="badge badge-success">Viral 🇸🇳</span>
+                                </div>
+                                <div class="mockup-card mb-1">
+                                    <div class="mockup-line w-80"></div>
+                                    <div class="mockup-line w-50"></div>
+                                </div>
+                                <div class="grid grid-3 gap-1">
+                                    <div class="mockup-metric">
+                                        <span class="label">Prix Achat</span>
+                                        <span class="val">1 200 FCFA</span>
+                                    </div>
+                                    <div class="mockup-metric">
+                                        <span class="label">Vente Conseillé</span>
+                                        <span class="val">8 500 FCFA</span>
+                                    </div>
+                                    <div class="mockup-metric highlight">
+                                        <span class="label">Marge Net</span>
+                                        <span class="val">+4 800 FCFA</span>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problems Section -->
+        <section id="problems" class="problems-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Le constat</span>
+                    <h2>Pourquoi 90% des e-commerçants débutants échouent ?</h2>
+                    <p class="section-description">Lancer un business e-commerce en Afrique comporte des pièges
+                        spécifiques que l'IA de SCALIFY vous aide à éviter.</p>
+                </div>
+                <div class="grid grid-4 gap-2 mt-3">
+                    <div class="problem-card">
+                        <div class="problem-icon">❌</div>
+                        <h3>Produits mal choisis</h3>
+                        <p>Vendre des produits saturés ou sans réelle demande au Sénégal, en gaspillant son petit
+                            budget.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📉</div>
+                        <h3>Calculs faussés</h3>
+                        <p>Oublier les frais de transport (Fret aérien/maritime), de douane, et de livraison locale à
+                            Dakar.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">💸</div>
+                        <h3>Pertes en publicité</h3>
+                        <p>Dépenser des dizaines de milliers de FCFA en pubs TikTok/Facebook sans cibler la bonne
+                            audience.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">✍️</div>
+                        <h3>Marketing inefficace</h3>
+                        <p>Manquer de scripts vidéos TikTok captivants, de hooks viraux, ou de fiches produits
+                            persuasives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section (SCALIFY Engine) -->
+        <section id="features" class="solution-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">La Solution</span>
+                    <h2>SCALIFY : L'Arsenal Complet de l'E-commerçant Moderne</h2>
+                    <p class="section-description">Toutes les fonctionnalités nécessaires pour sourcer, calculer,
+                        promouvoir et automatiser votre business réunis sur un seul et même dashboard.</p>
+                </div>
+                <div class="solution-features grid grid-3 gap-2 mt-3">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="sparkles"></i></div>
+                        <h3>Sourcing Intelligent</h3>
+                        <p>Accédez à un catalogue mis à jour quotidiennement de produits gagnants à haut potentiel de
+                            marge, sourcés directement depuis Alibaba/1688.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="calculator"></i></div>
+                        <h3>Calculateur de Coûts Réels</h3>
+                        <p>Entrez vos coûts d'achat en Chine et laissez notre algorithme calculer automatiquement le
+                            transport, la livraison locale et votre marge bénéficiaire nette.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="bot"></i></div>
+                        <h3>Copywriting IA Ecom</h3>
+                        <p>Générez instantanément des scripts TikTok/Reels ultra-ciblés, des accroches publicitaires
+                            Facebook et des messages de relance WhatsApp en français et wolof.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="image"></i></div>
+                        <h3>Générateur de Prompts Photo</h3>
+                        <p>Obtenez des prompts optimisés pour Midjourney ou DALL-E afin de concevoir des maquettes de
+                            produits de luxe sans payer un photographe pro.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="trending-up"></i></div>
+                        <h3>Simulateur Business V2</h3>
+                        <p>Modélisez votre business plan e-commerce complet : simulez vos ventes sur 30 jours, optimisez
+                            vos stocks et visualisez votre ROI avant de dépenser 1 FCFA.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="users"></i></div>
+                        <h3>Académie & Réseau Privé</h3>
+                        <p>Formez-vous avec nos guides condensés sur la logistique en Afrique et rejoignez le groupe
+                            d'entraide VIP sur WhatsApp & Telegram.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulation Showcase (Interactive Preview) -->
+        <section class="showcase-section">
+            <div class="container">
+                <div class="showcase-box bg-glass">
+                    <div class="grid grid-2 gap-2 align-center">
+                        <div class="showcase-content">
+                            <span class="badge badge-accent">Démo Interactive</span>
+                            <h2>Testez le calculateur de bénéfices en direct !</h2>
+                            <p>Modifiez les valeurs ci-contre pour voir comment SCALIFY analyse instantanément la
+                                viabilité d'un produit destiné au marché sénégalais.</p>
+                            <div class="showcase-inputs">
+                                <div class="form-group-row">
+                                    <label>Prix d'achat Chine (Alibaba)</label>
+                                    <div class="input-with-addon">
+                                        <input type="number" id="demo-purchase" value="1500">
+                                        <span class="addon">FCFA</span>
+                                    </div>
+                                </div>
+                                <div class="form-group-row">
+                                    <label>Prix de vente estimé (Sénégal)</label>
+                                    <div class="input-with-addon">
+                                        <input type="number" id="demo-sale" value="9500">
+                                        <span class="addon">FCFA</span>
+                                    </div>
+                                </div>
+                                <div class="form-group-row">
+                                    <label>Coût Fret (par pièce)</label>
+                                    <div class="input-with-addon">
+                                        <input type="number" id="demo-fret" value="1200">
+                                        <span class="addon">FCFA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-result-panel">
+                            <div class="result-card">
+                                <h3>Résultats Simulés</h3>
+                                <div class="result-grid">
+                                    <div class="res-item">
+                                        <span class="res-label">Coût Revient Réel</span>
+                                        <span class="res-val" id="demo-res-cost">4 200 FCFA</span>
+                                    </div>
+                                    <div class="res-item">
+                                        <span class="res-label">Bénéfice Net / Vente</span>
+                                        <span class="res-val highlight" id="demo-res-margin">+5 300 FCFA</span>
+                                    </div>
+                                    <div class="res-item">
+                                        <span class="res-label">Retour sur Investissement</span>
+                                        <span class="res-val text-success" id="demo-res-roi">126% ROI</span>
+                                    </div>
+                                    <div class="res-item">
+                                        <span class="res-label">Score Rentabilité</span>
+                                        <span class="badge badge-success" id="demo-res-score">Excellent (9.2/10)</span>
+                                    </div>
+                                </div>
+                                <div class="result-action mt-2">
+                                    <button class="btn btn-primary w-full" id="demo-cta-btn">Calculer sur tout mon
+                                        catalogue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Tarification simple</span>
+                    <h2>Un abonnement unique et transparent</h2>
+                    <p class="section-description">Pas de frais cachés. Accès illimité à tous nos outils pour le prix
+                        d'un café par semaine.</p>
+                </div>
+                <div class="pricing-container mt-3">
+                    <div class="pricing-card popular">
+                        <div class="pricing-badge">Populaire</div>
+                        <span class="plan-name">MEMBRE VIP SCALIFY</span>
+                        <div class="price-box">
+                            <span class="price">5 000 FCFA</span>
+                            <span class="period">/ mois</span>
+                        </div>
+                        <p class="plan-desc">Idéal pour lancer et scaler votre business e-commerce de 0 à 1 000 000 FCFA
+                            de bénéfice net mensuel.</p>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check" class="text-accent"></i> <strong>Accès illimité</strong> aux
+                                Produits Tendances</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Calculateur de Marges Ecom Avancé</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Générateur de Scripts Publicitaires IA
+                            </li>
+                            <li><i data-lucide="check" class="text-accent"></i> Assistant de prompts d'images IA</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Simulateur Business V2 complet</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Accès au <strong>Groupe Privé Telegram /
+                                    WhatsApp</strong></li>
+                            <li><i data-lucide="check" class="text-accent"></i> Mises à jour hebdomadaires des tendances
+                            </li>
+                        </ul>
+                        <button class="btn btn-primary btn-block mt-2" id="pricing-btn-subscribe">Rejoindre
+                            maintenant</button>
+                        <div class="pricing-footer text-center mt-1">
+                            <span class="text-muted">Paiement sécurisé via Orange Money & Wave</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Des questions ? Nous avons les réponses</h2>
+                </div>
+                <div class="faq-grid mt-3">
+                    <div class="faq-item">
+                        <h4>Quels modes de paiement acceptez-vous ?</h4>
+                        <p>Nous acceptons Wave, Orange Money, Free Money, et les cartes bancaires via notre partenaire
+                            de paiement sécurisé.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Comment fonctionne la recherche de produits ?</h4>
+                        <p>Notre algorithme analyse les boutiques Shopify mondiales, les vidéos virales TikTok et les
+                            bases de données d'importation pour repérer les produits avec de fortes marges qui ne sont
+                            pas encore saturés au Sénégal.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Puis-je annuler mon abonnement à tout moment ?</h4>
+                        <p>Oui. L'abonnement est sans engagement. Vous pouvez l'interrompre ou le relancer directement
+                            depuis votre espace client.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Est-ce que SCALIFY convient aux parfaits débutants ?</h4>
+                        <p>Absolument ! SCALIFY a été conçu pour guider les débutants pas-à-pas : du choix de produit au
+                            calcul du profit, jusqu'à la création automatique de vos publicités avec l'IA.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container footer-container">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">SCALIFY</span>
+                    </div>
+                    <p>Le copilote intelligent de l'e-commerce en Afrique.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h5>Plateforme</h5>
+                        <a href="#features">Fonctionnalités</a>
+                        <a href="#pricing">Tarifs</a>
+                    </div>
+                    <div class="link-group">
+                        <h5>Légal</h5>
+                        <a href="#">CGU / CGV</a>
+                        <a href="#">Confidentialité</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 SCALIFY. Tous droits réservés. Conçu pour les entrepreneurs africains.</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!--          2. AUTHENTIFICATION VIEWS         -->
+    <!-- ========================================== -->
+    <div id="auth-page" class="view-hidden">
+        <div class="auth-container">
+            <div class="auth-box bg-glass">
+                <div class="auth-logo text-center">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">SCALIFY</span>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <div id="login-form-wrapper" class="auth-form-wrapper">
+                    <h2>Bienvenue sur SCALIFY</h2>
+                    <p class="auth-subtitle">Connectez-vous pour accéder à vos outils e-commerce</p>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Adresse Email</label>
+                            <input type="email" id="login-email" required placeholder="nom@exemple.com">
+                        </div>
+                        <div class="form-group">
+                            <div class="flex justify-between">
+                                <label for="login-password">Mot de passe</label>
+                                <a href="#" id="link-forgot" class="text-accent text-sm">Mot de passe oublié ?</a>
+                            </div>
+                            <input type="password" id="login-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full mt-1">Se connecter</button>
+                    </form>
+                    <div class="auth-footer text-center mt-2">
+                        <p>Nouveau sur SCALIFY ? <a href="#" id="link-register" class="text-accent">Créer un compte</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- REGISTER FORM -->
+                <div id="register-form-wrapper" class="auth-form-wrapper hidden">
+                    <h2>Créer un compte</h2>
+                    <p class="auth-subtitle">Rejoignez la révolution e-commerce en Afrique</p>
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="register-name">Nom Complet</label>
+                            <input type="text" id="register-name" required placeholder="Ex: Amadou Ndiaye">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Adresse Email</label>
+                            <input type="email" id="register-email" required placeholder="amadou@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-phone">Numéro Téléphone (Wave/Orange Money)</label>
+                            <div class="input-with-addon">
+                                <span class="addon">+221</span>
+                                <input type="tel" id="register-phone" required placeholder="77 123 45 67">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Mot de passe</label>
+                            <input type="password" id="register-password" required placeholder="Min. 8 caractères">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full mt-1">S'inscrire</button>
+                    </form>
+                    <div class="auth-footer text-center mt-2">
+                        <p>Déjà membre ? <a href="#" id="link-login" class="text-accent">Se connecter</a></p>
+                    </div>
+                </div>
+
+                <!-- FORGOT PASSWORD FORM -->
+                <div id="forgot-form-wrapper" class="auth-form-wrapper hidden">
+                    <h2>Reinitialisation du mot de passe</h2>
+                    <p class="auth-subtitle">Entrez votre email pour recevoir un lien de reinitialisation.</p>
+                    <form id="forgot-form">
+                        <div class="form-group">
+                            <label for="forgot-email">Adresse Email</label>
+                            <input type="email" id="forgot-email" required placeholder="votre@email.com">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full mt-1">Envoyer le lien</button>
+                    </form>
+                    <div class="auth-footer text-center mt-2">
+                        <p><a href="#" id="link-back-login" class="text-accent">Retour a la connexion</a></p>
+                    </div>
+                </div>
+
+                <!-- OTP VERIFICATION FORM -->
+                <div id="otp-form-wrapper" class="auth-form-wrapper hidden">
+                    <h2>Verification d'identite</h2>
+                    <p class="auth-subtitle">Un code de verification a ete envoye au numero associe a votre compte.</p>
+                    <div class="otp-phone-info bg-dark p-1 rounded mb-15">
+                        <span class="text-muted text-sm">Numero :</span>
+                        <strong id="otp-phone-hint">+221 77 ***-**67</strong>
+                        <div class="mt-05">
+                            <span class="badge badge-warning text-xs" id="otp-simulated-code">Code simule :
+                                123456</span>
+                        </div>
+                    </div>
+                    <form id="otp-form">
+                        <div class="form-group">
+                            <label for="otp-input">Code de verification (6 chiffres)</label>
+                            <input type="text" id="otp-input" required placeholder="Ex : 482931" maxlength="6"
+                                autocomplete="one-time-code"
+                                style="letter-spacing:0.3em;font-size:1.4rem;text-align:center;">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full mt-1">Confirmer l'identite</button>
+                    </form>
+                    <div class="auth-footer text-center mt-2">
+                        <p><a href="#" onclick="toggleAuthForm('login');return false;"
+                                class="text-muted text-sm">Annuler et revenir</a></p>
+                    </div>
+                </div>
+
+                <div class="auth-back-home text-center mt-2">
+                    <a href="#" id="auth-btn-back-home" class="text-muted"><i data-lucide="arrow-left"
+                            class="inline-icon"></i> Retour au site</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!--          3. DASHBOARD PRINCIPAL            -->
+    <!-- ========================================== -->
+    <div id="app-dashboard" class="view-hidden">
+        <div class="app-layout">
+
+            <!-- Sidebar Navigation -->
+            <aside class="app-sidebar" id="app-sidebar">
+                <div class="sidebar-header">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">SCALIFY</span>
+                    <button class="sidebar-close-btn" id="sidebar-close-btn">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-user-info bg-glass">
+                    <div class="user-avatar-circle">AN</div>
+                    <div class="user-details">
+                        <h4 id="user-display-name">Utilisateur</h4>
+                        <span class="badge badge-success-outline" id="user-sub-badge">Inactif</span>
+                        <span class="badge badge-secondary mt-05" id="user-level-badge">Niveau 1</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="#" class="menu-item active" data-tab="tab-overview">
+                        <i data-lucide="layout-dashboard"></i> <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-products">
+                        <i data-lucide="package"></i> <span>Produits gagnants</span>
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-calculator">
+                        <i data-lucide="calculator"></i> <span>Calculateur Marge</span>
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-marketing-ia">
+                        <i data-lucide="bot"></i> <span>IA Copilot (Prompts)</span>
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-image-ia">
+                        <i data-lucide="image"></i> <span>Images IA (Prompts)</span>
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-simulation">
+                        <i data-lucide="trending-up"></i> <span>Simulation Business</span>
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-market-trends">
+                        <i data-lucide="globe"></i> <span>Analyse Marché</span>
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-academy">
+                        <i data-lucide="graduation-cap"></i> <span>Ecom Académie</span>
+                    </a>
+                    <div class="menu-divider"></div>
+                    <a href="#" class="menu-item" data-tab="tab-account">
+                        <i data-lucide="user"></i> <span>Mon Compte</span>
+                    </a>
+                    <a href="#" class="menu-item" id="btn-vip-group">
+                        <i data-lucide="message-square" class="text-accent"></i> <strong class="text-accent">Groupe
+                            Privé VIP</strong>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <button class="btn btn-secondary-outline w-full" id="btn-logout">
+                        <i data-lucide="log-out"></i> Déconnexion
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main App Content Area -->
+            <main class="app-main">
+                <!-- App Top Header -->
+                <header class="app-header flex justify-between align-center">
+                    <div class="flex align-center gap-1">
+                        <button class="sidebar-open-btn" id="sidebar-open-btn">
+                            <i data-lucide="menu"></i>
+                        </button>
+                        <h2 class="page-title" id="app-page-title">Dashboard</h2>
+                    </div>
+                    <div class="app-header-actions flex align-center gap-1">
+                        <div class="header-metric bg-glass px-1 py-05 rounded flex align-center gap-05">
+                            <span class="text-muted text-sm">Score Ecom :</span>
+                            <span class="text-accent font-bold" id="header-user-score">780 pts</span>
+                        </div>
+                        <div class="header-sub-status">
+                            <span class="badge badge-accent" id="header-sub-pill">VIP Sénégal 🇸🇳</span>
+                        </div>
+                        <div class="user-profile-menu">
+                            <div class="user-avatar-circle" id="header-avatar">AN</div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="app-content-container">
+
+                    <!-- ================= TAB: OVERVIEW ================= -->
+                    <div id="tab-overview" class="tab-panel active">
+                        <div class="grid grid-3 gap-15">
+                            <div class="metric-card bg-glass">
+                                <div class="flex justify-between align-center">
+                                    <span class="metric-label">Statut Abonnement</span>
+                                    <i data-lucide="shield-check" class="text-accent"></i>
+                                </div>
+                                <h3 class="metric-value text-accent" id="overview-sub-status">Premium Actif</h3>
+                                <span class="metric-desc">Prochain renouvellement : 19 Juin 2026 (5000 F)</span>
+                            </div>
+                            <div class="metric-card bg-glass">
+                                <div class="flex justify-between align-center">
+                                    <span class="metric-label">Profits Simulés Cumulés</span>
+                                    <i data-lucide="trending-up" class="text-success"></i>
+                                </div>
+                                <h3 class="metric-value text-success" id="overview-simulated-profits">0 FCFA
+                                </h3>
+                                <span class="metric-desc">À travers 4 simulations de projets actives</span>
+                            </div>
+                            <div class="metric-card bg-glass">
+                                <div class="flex justify-between align-center">
+                                    <span class="metric-label">Score de Rentabilité Moyen</span>
+                                    <i data-lucide="award" class="text-warning"></i>
+                                </div>
+                                <h3 class="metric-value text-warning" id="overview-avg-score">0 / 10</h3>
+                                <span class="metric-desc">Sélection de produits très saine</span>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations & Recents -->
+                        <div class="grid grid-3-2 gap-15 mt-15">
+                            <div class="card bg-glass">
+                                <div class="card-header flex justify-between align-center">
+                                    <h3>🤖 Recommandations IA Personnalisées</h3>
+                                    <span class="badge badge-accent">V2 Actif</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="recommendations-list">
+                                        <div class="rec-item">
+                                            <div class="rec-icon">💡</div>
+                                            <div class="rec-details">
+                                                <h4>Opportunité Ramadan / Tabaski</h4>
+                                                <p>Le marché sénégalais montre une hausse de demande de 180% sur la
+                                                    catégorie "Appareils de cuisine portables". C'est le moment
+                                                    d'importer le Mini Mixeur Électrique.</p>
+                                            </div>
+                                        </div>
+                                        <div class="rec-item">
+                                            <div class="rec-icon">⚠️</div>
+                                            <div class="rec-details">
+                                                <h4>Alerte Saturation : Mini Projecteurs</h4>
+                                                <p>Les coûts de publicité TikTok à Dakar augmentent sur la niche
+                                                    "Projecteurs Led". Nous vous conseillons de réduire le budget sur
+                                                    cette catégorie.</p>
+                                            </div>
+                                        </div>
+                                        <div class="rec-item">
+                                            <div class="rec-icon">🔥</div>
+                                            <div class="rec-details">
+                                                <h4>Optimisation de marge</h4>
+                                                <p>En négociant le fret aérien à 9500 FCFA/kg (au lieu de 11 000 FCFA),
+                                                    votre ROI sur les Smartwatches grimpe de 18%.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-glass">
+                                <div class="card-header flex justify-between align-center">
+                                    <h3>📦 Produits Récemment Analysés</h3>
+                                    <button class="btn btn-text btn-sm" onclick="appSwitchTab('tab-products')">Voir
+                                        tout</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="recent-analyzed-list" id="recent-products-list">
+                                        <!-- Will be filled by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: PRODUCTS ================= -->
+                    <div id="tab-products" class="tab-panel">
+                        <div class="tab-actions-bar flex justify-between align-center mb-15">
+                            <div class="search-filter-group flex gap-1">
+                                <input type="text" id="product-search" placeholder="Rechercher un produit...">
+                                <select id="product-status-filter">
+                                    <option value="all">Tous les statuts</option>
+                                    <option value="viral">🔥 Viral</option>
+                                    <option value="stable">📈 Stable</option>
+                                    <option value="risky">⚠️ Risqué</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" id="btn-add-custom-product"><i data-lucide="plus"
+                                    class="inline-icon"></i> Ajouter un produit</button>
+                        </div>
+
+                        <!-- Product Grid -->
+                        <div class="grid grid-3 gap-15" id="trending-products-grid">
+                            <!-- Filled dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: CALCULATOR ================= -->
+                    <div id="tab-calculator" class="tab-panel">
+                        <div class="grid grid-2 gap-2">
+                            <!-- Calculator Inputs -->
+                            <div class="card bg-glass">
+                                <div class="card-header">
+                                    <h3>Calculateur Automatique de Profits Réels</h3>
+                                    <p class="text-muted text-sm">Entrez vos données de sourcing pour calculer
+                                        instantanément votre rentabilité nette sur le marché sénégalais.</p>
+                                </div>
+                                <div class="card-body">
+                                    <form id="profit-calc-form" class="mt-1">
+                                        <div class="grid grid-2 gap-1">
+                                            <div class="form-group">
+                                                <label for="calc-buy-price">Prix d'Achat Unitaire (Alibaba)</label>
+                                                <div class="input-with-addon">
+                                                    <input type="number" id="calc-buy-price" value="1500" required>
+                                                    <span class="addon">FCFA</span>
+                                                </div>
+                                                <span class="input-tip">Prix unitaire payé au fournisseur en
+                                                    Chine.</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="calc-quantity">Quantité commandée</label>
+                                                <input type="number" id="calc-quantity" value="100" required>
+                                                <span class="input-tip">Nombre de pièces importées.</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-1 gap-1 mt-1 mb-1"
+                                            style="background: var(--color-bg-deep); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+                                            <div class="form-group">
+                                                <label for="calc-transport-mode">Mode de Transport (Chine ->
+                                                    Sénégal)</label>
+                                                <select id="calc-transport-mode"
+                                                    style="width: 100%; padding: 10px; background: var(--color-bg-card); color: var(--color-text); border: 1px solid var(--border-color); border-radius: 4px;">
+                                                    <option value="bateau">Bateau (Maritime) - 180 000 FCFA / CBM
+                                                    </option>
+                                                    <option value="avion">Avion (Aérien) - 8 000 FCFA / Kg</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Bateau Inputs -->
+                                            <div id="boat-inputs" class="form-group">
+                                                <label>Dimensions totales de la commande (en Mètres)</label>
+                                                <div class="grid grid-3 gap-05">
+                                                    <input type="number" step="0.01" id="calc-length"
+                                                        placeholder="L (m)" value="0.5">
+                                                    <input type="number" step="0.01" id="calc-width" placeholder="l (m)"
+                                                        value="0.4">
+                                                    <input type="number" step="0.01" id="calc-height"
+                                                        placeholder="H (m)" value="0.3">
+                                                </div>
+                                                <span class="input-tip">Volume (CBM) = Longueur × Largeur ×
+                                                    Hauteur.</span>
+                                            </div>
+
+                                            <!-- Avion Inputs -->
+                                            <div id="air-inputs" class="form-group hidden">
+                                                <label>Poids Total de la commande (Kg)</label>
+                                                <div class="input-with-addon">
+                                                    <input type="number" step="0.1" id="calc-weight" value="10">
+                                                    <span class="addon">Kg</span>
+                                                </div>
+                                                <span class="input-tip">Transport = Poids × 8 000 FCFA.</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-1 gap-1">
+                                            <div class="form-group">
+                                                <label for="calc-frais-locaux">Douane + Logistique Locale</label>
+                                                <div class="input-with-addon">
+                                                    <input type="number" id="calc-frais-locaux" value="50000" required>
+                                                    <span class="addon">FCFA</span>
+                                                </div>
+                                                <span class="input-tip">Frais de dédouanement et transport
+                                                    dakarois.</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-2 gap-1">
+                                            <div class="form-group">
+                                                <label for="calc-delivery">Coût de livraison locale (client)</label>
+                                                <div class="input-with-addon">
+                                                    <input type="number" id="calc-delivery" value="1500" required>
+                                                    <span class="addon">FCFA</span>
+                                                </div>
+                                                <span class="input-tip">Payé au livreur à Dakar par vente.</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="calc-ad-budget">Budget Pub Global (TikTok/FB)</label>
+                                                <div class="input-with-addon">
+                                                    <input type="number" id="calc-ad-budget" value="100000" required>
+                                                    <span class="addon">FCFA</span>
+                                                </div>
+                                                <span class="input-tip">Optionnel. Budget total alloué aux ventes de ce
+                                                    lot.</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="calc-sale-price">Prix de vente final recommandé</label>
+                                            <div class="input-with-addon">
+                                                <input type="number" id="calc-sale-price" value="9500" required>
+                                                <span class="addon">FCFA</span>
+                                            </div>
+                                            <span class="input-tip">Prix de vente facturé au client final au
+                                                Sénégal.</span>
+                                        </div>
+
+                                        <button type="button" class="btn btn-primary w-full mt-1"
+                                            id="btn-trigger-calculate">Calculer la Rentabilité Réelle</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Calculator Results Display -->
+                            <div class="card bg-glass flex flex-column justify-between">
+                                <div class="card-header">
+                                    <h3>Rapport d'Analyse Financière</h3>
+                                    <span class="badge badge-accent" id="calc-result-status-badge">Analyse Active</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="calc-results-display">
+                                        <div class="calc-main-stats grid grid-2 gap-1">
+                                            <div class="calc-stat-box">
+                                                <span class="label">Coût Unitaire de Revient</span>
+                                                <h4 class="val" id="calc-res-unit-cost">- FCFA</h4>
+                                                <span class="sub text-muted">Achat + Fret + Douane unitaire</span>
+                                            </div>
+                                            <div class="calc-stat-box highlight">
+                                                <span class="label">Bénéfice Net Unitaire</span>
+                                                <h4 class="val text-success" id="calc-res-unit-margin">- FCFA</h4>
+                                                <span class="sub text-muted">Hors budget publicité</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="divider mt-15 mb-15"></div>
+
+                                        <div class="grid grid-3 gap-1">
+                                            <div class="small-stat">
+                                                <span class="label">Investissement Total</span>
+                                                <span class="val" id="calc-res-total-invest">- FCFA</span>
+                                            </div>
+                                            <div class="small-stat">
+                                                <span class="label">Bénéfice Net Total</span>
+                                                <span class="val text-success" id="calc-res-total-margin">- FCFA</span>
+                                            </div>
+                                            <div class="small-stat">
+                                                <span class="label">ROI Estimé</span>
+                                                <span class="val text-accent" id="calc-res-roi">-%</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="divider mt-15 mb-15"></div>
+
+                                        <!-- Intelligent Advisory V2 -->
+                                        <div class="advisory-box bg-glass mt-1" id="calc-advisory-box">
+                                            <div class="flex align-center gap-05 mb-05">
+                                                <span id="calc-advisory-icon">🏆</span>
+                                                <h4 id="calc-advisory-title">Opportunité très lucrative</h4>
+                                            </div>
+                                            <p id="calc-advisory-text">Ce produit dispose d'une marge unitaire
+                                                supérieure à 60%. Même avec un coût d'acquisition client (CAC) élevé en
+                                                publicité, le projet restera très profitable au Sénégal.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-secondary-outline w-full" id="btn-save-simulation"><i
+                                            data-lucide="save" class="inline-icon"></i> Enregistrer cette
+                                        simulation</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: IA MARKETING ================= -->
+                    <div id="tab-marketing-ia" class="tab-panel">
+                        <div class="grid grid-3-2 gap-2">
+                            <!-- Generator Controller -->
+                            <div class="card bg-glass">
+                                <div class="card-header">
+                                    <h3>🤖 Copilote de Marketing IA</h3>
+                                    <p class="text-muted text-sm">Générez instantanément des contenus marketing à forte
+                                        conversion adaptés au marché africain.</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group mt-1">
+                                        <label for="mkt-product-select">Sélectionner un produit</label>
+                                        <select id="mkt-product-select">
+                                            <!-- Dynamically filled with trending or custom products -->
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mkt-target-audience">Audience cible (Sénégal)</label>
+                                        <select id="mkt-target-audience">
+                                            <option value="jeunes">Jeunes actifs et étudiants (18-35 ans)</option>
+                                            <option value="femmes">Femmes et mères de famille (Dakar/Régions)</option>
+                                            <option value="hommes">Hommes actifs (BTP, Business, Tech)</option>
+                                            <option value="general">Grand public (Achat impulsif TikTok/Wave)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mkt-tone">Ton de la communication</label>
+                                        <select id="mkt-tone">
+                                            <option value="viral">🔥 Hyper-viral & Captivant (TikTok/Reels)</option>
+                                            <option value="luxe">✨ Premium & Prestigieux</option>
+                                            <option value="solution">🛠️ Résolution de Problème urgent</option>
+                                            <option value="wolof">🇸🇳 Mix Français / Wolof amical</option>
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-primary w-full mt-1" id="btn-generate-mkt"><i
+                                            data-lucide="sparkles" class="inline-icon"></i> Générer mes Textes de
+                                        Vente</button>
+                                </div>
+                            </div>
+
+                            <!-- Generated Content Displays -->
+                            <div class="card bg-glass flex flex-column">
+                                <div class="card-header flex justify-between align-center">
+                                    <h3>Textes Publicitaires Générés</h3>
+                                    <span class="badge badge-success-outline" id="mkt-status-badge">Prêt</span>
+                                </div>
+
+                                <div class="card-body overflow-y-auto" style="max-height: 480px;">
+                                    <div class="mkt-tabs-navigation flex gap-05 mb-1 bg-dark p-02 rounded">
+                                        <button class="mkt-tab-btn active" data-mkt="mkt-hooks">Hooks TikTok</button>
+                                        <button class="mkt-tab-btn" data-mkt="mkt-scripts">Scripts Vidéo</button>
+                                        <button class="mkt-tab-btn" data-mkt="mkt-whatsapp">WhatsApp & Pub</button>
+                                    </div>
+
+                                    <!-- Hook List -->
+                                    <div id="mkt-hooks" class="mkt-content-panel active">
+                                        <div class="generated-hook-list" id="generated-hooks-container">
+                                            <p class="text-muted">Sélectionnez un produit et cliquez sur Générer pour
+                                                voir les accroches publicitaires virales.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scripts List -->
+                                    <div id="mkt-scripts" class="mkt-content-panel">
+                                        <div class="generated-scripts-list" id="generated-scripts-container">
+                                            <p class="text-muted">Les scripts de vidéos TikTok/Reels s'afficheront ici.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- WhatsApp & Facebook Ad Copy -->
+                                    <div id="mkt-whatsapp" class="mkt-content-panel">
+                                        <div class="generated-copy-list" id="generated-copy-container">
+                                            <p class="text-muted">Les fiches de vente WhatsApp et emails s'afficheront
+                                                ici.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: IMAGE IA ================= -->
+                    <div id="tab-image-ia" class="tab-panel">
+                        <div class="grid grid-2 gap-2">
+                            <div class="card bg-glass">
+                                <div class="card-header">
+                                    <h3>🎨 Générateur de Prompts Photo IA</h3>
+                                    <p class="text-muted text-sm">Créez des invites textuelles de qualité
+                                        professionnelle pour Midjourney, Leonardo ou DALL-E 3 afin d'illustrer vos
+                                        produits de manière ultra-premium.</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group mt-1">
+                                        <label for="img-product-select">Produit à mettre en scène</label>
+                                        <select id="img-product-select">
+                                            <!-- Dynamically filled -->
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="img-style">Style de photographie</label>
+                                        <select id="img-style">
+                                            <option value="luxury">✨ Studio Luxe (Fond sombre, éclairage doré, ombres
+                                                douces)</option>
+                                            <option value="minimalist">⬜ Scandinave / Minimaliste (Fond clair uni, bois
+                                                naturel)</option>
+                                            <option value="lifestyle">🌴 Lifestyle Tropical (Utilisation en extérieur,
+                                                lumière du soleil)</option>
+                                            <option value="ecommerce">🛒 Shopify Premium (Fond blanc immaculé, haute
+                                                définition)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="img-platform">Format de destination</label>
+                                        <select id="img-platform">
+                                            <option value="instagram">Instagram Square (1:1)</option>
+                                            <option value="tiktok">TikTok/Reels Story (9:16)</option>
+                                            <option value="facebook">Publicité Web Paysage (16:9)</option>
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-primary w-full mt-1" id="btn-generate-img-prompt"><i
+                                            data-lucide="image" class="inline-icon"></i> Concevoir le Prompt de
+                                        Produit</button>
+                                </div>
+                            </div>
+
+                            <div class="card bg-glass flex flex-column justify-between">
+                                <div class="card-header">
+                                    <h3>Prompt Optimisé Midjourney & DALL-E</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="prompt-output-box bg-dark p-1 rounded font-mono text-sm mb-1"
+                                        id="image-prompt-output">
+                                        Cliquez sur "Concevoir le Prompt de Produit" pour générer une structure d'invite
+                                        de niveau professionnel.
+                                    </div>
+                                    <div class="alert alert-info">
+                                        <strong>💡 Conseil d'utilisation :</strong> Copiez ce prompt dans Midjourney v6
+                                        en ajoutant les paramètres <code>--v 6.0 --style raw</code> pour obtenir le
+                                        meilleur rendu possible pour des visuels de boutiques e-commerce.
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-secondary w-full" id="btn-copy-img-prompt"><i
+                                            data-lucide="copy" class="inline-icon"></i> Copier le Prompt</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: SIMULATION ================= -->
+                    <div id="tab-simulation" class="tab-panel">
+                        <div class="grid grid-3-2 gap-2">
+                            <!-- Sim input -->
+                            <div class="card bg-glass">
+                                <div class="card-header">
+                                    <h3>📈 Simulateur de Business Plan Ecom (V2)</h3>
+                                    <p class="text-muted text-sm">Simulez le cycle de vente complet de votre stock sur
+                                        30 jours pour prévoir votre trésorerie et le moment exact de rentabilité
+                                        (Break-Even).</p>
+                                </div>
+                                <div class="card-body">
+                                    <form id="simulation-form" class="mt-1">
+                                        <div class="form-group">
+                                            <label for="sim-product">Produit commandé</label>
+                                            <select id="sim-product">
+                                                <!-- Dyn -->
+                                            </select>
+                                        </div>
+                                        <div class="grid grid-2 gap-1">
+                                            <div class="form-group">
+                                                <label for="sim-qty">Taille du Stock (pièces)</label>
+                                                <input type="number" id="sim-qty" value="150">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sim-ad-daily">Budget Pub Quotidien</label>
+                                                <div class="input-with-addon">
+                                                    <input type="number" id="sim-ad-daily" value="5000">
+                                                    <span class="addon">FCFA</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-2 gap-1">
+                                            <div class="form-group">
+                                                <label for="sim-cac">Coût Client estimé (CAC)</label>
+                                                <div class="input-with-addon">
+                                                    <input type="number" id="sim-cac" value="1500">
+                                                    <span class="addon">FCFA</span>
+                                                </div>
+                                                <span class="input-tip">Coût pub pour faire 1 vente.</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sim-delivery-rate">Taux de Livraison Réussie</label>
+                                                <select id="sim-delivery-rate">
+                                                    <option value="0.90">90% (Excellent - Dakar centre)</option>
+                                                    <option value="0.80" selected>80% (Moyenne Dakar & Banlieue)
+                                                    </option>
+                                                    <option value="0.65">65% (Difficile - Envois Régions)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-full mt-1"
+                                            id="btn-run-simulation">Lancer la Simulation Financière</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Sim output report -->
+                            <div class="card bg-glass flex flex-column justify-between">
+                                <div class="card-header">
+                                    <h3>Prévisions Financières & Break-Even</h3>
+                                    <span class="badge badge-accent">Modèle Prédictif V2</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="simulation-chart-container mb-15">
+                                        <!-- Custom SVG dynamic chart -->
+                                        <div class="svg-chart-wrapper" id="sim-svg-chart">
+                                            <!-- SVG will be generated by JS -->
+                                        </div>
+                                    </div>
+                                    <div class="simulation-metrics grid grid-2 gap-1">
+                                        <div class="sim-metric-box">
+                                            <span class="label">Jours d'Ecoulement du Stock</span>
+                                            <h4 class="val" id="sim-res-days">--</h4>
+                                        </div>
+                                        <div class="sim-metric-box">
+                                            <span class="label">Chiffre d'Affaires Net</span>
+                                            <h4 class="val" id="sim-res-ca">--</h4>
+                                        </div>
+                                        <div class="sim-metric-box">
+                                            <span class="label">Benefice Net Total</span>
+                                            <h4 class="val" id="sim-res-net-profit">--</h4>
+                                        </div>
+                                        <div class="sim-metric-box highlight">
+                                            <span class="label">Break-Even (Rentabilite)</span>
+                                            <h4 class="val text-accent" id="sim-res-breakeven">--</h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- POST-SIMULATION DECISION PANEL -->
+                                    <div id="sim-decision-panel" class="hidden mt-15">
+                                        <div class="divider mb-1"></div>
+                                        <h4 class="mb-05">Votre Decision</h4>
+                                        <p class="text-sm text-muted mb-1">Sur la base de cette simulation,
+                                            souhaitez-vous lancer ce projet ou le decliner ? Votre decision sera
+                                            enregistree et contribuera a votre progression de niveau.</p>
+                                        <div class="grid grid-2 gap-1">
+                                            <button class="btn btn-primary" id="btn-sim-launch">Confirmer le
+                                                Lancement</button>
+                                            <button class="btn btn-secondary-outline" id="btn-sim-decline">Decliner ce
+                                                Projet</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: MARKET TRENDS ================= -->
+                    <div id="tab-market-trends" class="tab-panel">
+                        <div class="card bg-glass mb-15">
+                            <div class="card-header">
+                                <h3>Analyse de Marche - Senegal</h3>
+                                <p class="text-muted text-sm">Entrez le nom d'un produit pour obtenir une analyse
+                                    detaillee du marche local par l'intelligence artificielle.</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="flex gap-1">
+                                    <input type="text" id="market-product-query"
+                                        placeholder="Ex: Mini aspirateur portable, ceinture chauffante, seche-cheveux ionen..."
+                                        style="flex:1;">
+                                    <button class="btn btn-primary" id="btn-analyze-product">Analyser ce
+                                        Produit</button>
+                                </div>
+                                <div id="market-ai-result" class="hidden mt-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-glass mb-15">
+                            <div class="card-header">
+                                <h3>🌍 Tendances Marché & Opportunités Saisonnières (Sénégal)</h3>
+                                <p class="text-muted text-sm">Analyse automatique du marché de Dakar basée sur les pics
+                                    saisonniers (Ramadan, Rentrée scolaire, Tabaski, Fêtes de fin d'année).</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="grid grid-3 gap-1">
+                                    <div class="trend-season-box bg-dark p-1 rounded border-accent">
+                                        <div class="flex justify-between align-center">
+                                            <span class="season-badge active">PROCHE (Tabaski / Ramadan)</span>
+                                            <span class="trend-up font-bold text-success">+240%</span>
+                                        </div>
+                                        <h4 class="mt-05">Alimentaire, Cuisine & Prêt à Porter</h4>
+                                        <p class="text-sm text-muted">Forte demande pour les robots culinaires, hachoirs
+                                            électriques et tenues traditionnelles prêtes à livrer.</p>
+                                    </div>
+                                    <div class="trend-season-box bg-dark p-1 rounded">
+                                        <div class="flex justify-between align-center">
+                                            <span class="season-badge">Saison des Pluies (Hivernage)</span>
+                                            <span class="trend-up font-bold text-success">+150%</span>
+                                        </div>
+                                        <h4 class="mt-05">Imperméables & Accessoires Auto</h4>
+                                        <p class="text-sm text-muted">Parapluies pliables robustes, bâches protectrices
+                                            auto, et gadgets de nettoyage intérieur.</p>
+                                    </div>
+                                    <div class="trend-season-box bg-dark p-1 rounded">
+                                        <div class="flex justify-between align-center">
+                                            <span class="season-badge">Rentrée Scolaire</span>
+                                            <span class="trend-up font-bold text-success">+190%</span>
+                                        </div>
+                                        <h4 class="mt-05">Sacs Éclairés, Papeterie & Électronique</h4>
+                                        <p class="text-sm text-muted">Sacs à dos ergonomiques pour enfants, tablettes
+                                            éducatives et gourdes isothermes.</p>
+                                    </div>
+                                </div>
+
+                                <h3 class="mt-2 mb-1">🔥 Analyse TikTok Ecom Sénégal</h3>
+                                <div class="grid grid-2 gap-15">
+                                    <div class="bg-glass p-1 rounded">
+                                        <h4 class="text-accent mb-05">⭐ Niches Sous-exploitées à fort ROI</h4>
+                                        <ul class="niche-list">
+                                            <li>💡 <strong>Domotique & Sécurité Maison</strong> (Caméras Wifi sans fil à
+                                                prix réduit)</li>
+                                            <li>💅 <strong>Soins Cosmétiques Naturels</strong> (Huiles végétales bios,
+                                                masseurs de visage)</li>
+                                            <li>🚗 <strong>Accessoires Automobiles Pratiques</strong> (Supports de
+                                                téléphone magnétiques, mini compresseurs d'air)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-glass p-1 rounded">
+                                        <h4 class="text-warning mb-05">⚠️ Niches Saturées (À éviter)</h4>
+                                        <ul class="niche-list">
+                                            <li>❌ <strong>Ring Lights standard 10" / 12"</strong> (Coût pub trop élevé,
+                                                marges infimes)</li>
+                                            <li>❌ <strong>Écouteurs F9 Bluetooth classiques</strong> (Trop de
+                                                concurrence sur Facebook Marketplace)</li>
+                                            <li>❌ <strong>Pistolets de massage bas de gamme</strong> (Taux de retour et
+                                                SAV trop complexes)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: ACADEMY ================= -->
+                    <div id="tab-academy" class="tab-panel">
+                        <div class="grid grid-3-2 gap-2">
+                            <!-- Academy Courses -->
+                            <div class="card bg-glass">
+                                <div class="card-header">
+                                    <h3>📚 Ecom Académie & Tutoriels Pratiques</h3>
+                                    <p class="text-muted text-sm">Apprenez à sourcer, importer et vendre efficacement au
+                                        Sénégal sans commettre d'erreurs coûteuses.</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="academy-chapters">
+                                        <div class="chapter-item bg-dark p-1 rounded mb-1">
+                                            <div class="flex justify-between align-center">
+                                                <h4>Module 1 : Le Sourcing en Chine & Alibaba</h4>
+                                                <span class="badge badge-success">Lu</span>
+                                            </div>
+                                            <p class="text-sm text-muted mt-05">Comment négocier avec les fournisseurs
+                                                chinois, repérer les labels de confiance (Trade Assurance) et obtenir de
+                                                bons prix.</p>
+                                        </div>
+                                        <div class="chapter-item bg-dark p-1 rounded mb-1">
+                                            <div class="flex justify-between align-center">
+                                                <h4>Module 2 : Le Fret et le Transit en Afrique</h4>
+                                                <span class="badge badge-accent">En cours</span>
+                                            </div>
+                                            <p class="text-sm text-muted mt-05">Tout comprendre sur le fret aérien
+                                                (10-15 jours) et fret maritime (30-45 jours) vers Dakar, et comment
+                                                choisir un transitaire fiable.</p>
+                                        </div>
+                                        <div class="chapter-item bg-dark p-1 rounded mb-1">
+                                            <div class="flex justify-between align-center">
+                                                <h4>Module 3 : Publicité TikTok Ads à Dakar</h4>
+                                                <span class="badge badge-secondary">À lire</span>
+                                            </div>
+                                            <p class="text-sm text-muted mt-05">Configurer ses premières campagnes,
+                                                filmer des créatives de produits viraux et baisser son coût par achat
+                                                publicitaire.</p>
+                                        </div>
+                                        <div class="chapter-item bg-dark p-1 rounded">
+                                            <div class="flex justify-between align-center">
+                                                <h4>Module 4 : La Livraison & Paiement Wave/Orange</h4>
+                                                <span class="badge badge-secondary">À lire</span>
+                                            </div>
+                                            <p class="text-sm text-muted mt-05">Mettre en place un réseau de livreurs de
+                                                confiance, réduire le taux de refus et collecter les fonds via
+                                                Wave/Orange Money.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Private Group Portal -->
+                            <div class="card bg-glass flex flex-column justify-between align-center text-center p-2">
+                                <div class="vip-group-logo">👑</div>
+                                <div class="vip-group-text">
+                                    <h3>Rejoignez la Communauté Privée</h3>
+                                    <p class="text-muted mt-05">Échangez quotidiennement avec d'autres e-commerçants
+                                        d'Afrique de l'Ouest, partagez vos transitaires, découvrez les produits chauds
+                                        et posez vos questions.</p>
+                                </div>
+                                <div class="vip-group-actions mt-2 w-full">
+                                    <a href="https://t.me/scalify_private_vip_placeholder" target="_blank"
+                                        class="btn btn-primary w-full" id="btn-telegram-vip">
+                                        <i data-lucide="message-circle" class="inline-icon"></i> Ouvrir le Groupe
+                                        Telegram VIP
+                                    </a>
+                                    <a href="https://chat.whatsapp.com/scalify_vip_placeholder" target="_blank"
+                                        class="btn btn-secondary-outline w-full mt-05" id="btn-whatsapp-vip">
+                                        <i data-lucide="phone" class="inline-icon"></i> Ouvrir le Groupe WhatsApp VIP
+                                    </a>
+                                </div>
+                                <p class="text-xs text-muted mt-1">L'accès à ce groupe est inclus dans votre abonnement
+                                    de 5000 FCFA/mois.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= TAB: ACCOUNT ================= -->
+                    <div id="tab-account" class="tab-panel">
+                        <div class="grid grid-2 gap-2">
+                            <!-- Account profile -->
+                            <div class="card bg-glass">
+                                <div class="card-header">
+                                    <h3>Gestion du Profil</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form id="profile-edit-form" class="mt-1">
+                                        <div class="form-group">
+                                            <label for="prof-name">Nom Complet</label>
+                                            <input type="text" id="prof-name" value="Amadou Ndiaye">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="prof-email">Adresse Email</label>
+                                            <input type="email" id="prof-email" value="amadou@gmail.com" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="prof-phone">Numéro de téléphone</label>
+                                            <div class="input-with-addon">
+                                                <span class="addon">+221</span>
+                                                <input type="text" id="prof-phone" value="77 123 45 67">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-full mt-1">Sauvegarder les
+                                            modifications</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Subscription status & wave/orange payment gateway simulation -->
+                            <div class="card bg-glass">
+                                <div class="card-header">
+                                    <h3>Abonnement & Facturation</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="subscription-status-box bg-dark p-1 rounded mb-15">
+                                        <div class="flex justify-between align-center">
+                                            <span>Formule</span>
+                                            <span class="badge badge-accent">SCALIFY VIP</span>
+                                        </div>
+                                        <div class="price-box mt-05">
+                                            <h4>5 000 FCFA <span class="text-sm font-normal">/ mois</span></h4>
+                                        </div>
+                                        <div class="divider mt-1 mb-1"></div>
+                                        <div class="flex justify-between align-center">
+                                            <span class="text-sm text-muted">Statut</span>
+                                            <span class="text-success font-bold" id="account-sub-status-label">Payé
+                                                (Actif)</span>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="mb-05">Simulateur de Paiement Local</h4>
+                                    <p class="text-sm text-muted mb-1">Simulez le paiement ou l'expiration de votre
+                                        abonnement pour tester le comportement de la plateforme.</p>
+
+                                    <div class="grid grid-2 gap-1">
+                                        <button class="btn btn-secondary-outline text-success border-success"
+                                            id="btn-simulate-pay-wave">
+                                            ⚡ Activer / Payer 5000 F
+                                        </button>
+                                        <button class="btn btn-secondary-outline text-danger border-danger"
+                                            id="btn-simulate-expire">
+                                            ❌ Expirer l'abonnement
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comment Section for Users -->
+                            <div class="card bg-glass mt-2">
+                                <div class="card-header">
+                                    <h3>Avis et Commentaires</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div id="comments-list" class="comments-list mb-1">
+                                        <!-- Comments loaded via JS -->
+                                    </div>
+                                    <button type="button" id="btn-load-more-comments"
+                                        class="btn btn-secondary-outline w-full mb-15 hidden"
+                                        style="border-style:dashed;">Voir plus de commentaires <i
+                                            data-lucide="chevron-down" class="inline-icon"></i></button>
+                                    <form id="comment-form">
+                                        <div class="form-group mb-1">
+                                            <textarea id="comment-text" rows="3"
+                                                placeholder="Laissez un avis ou un commentaire sur l'abonnement VIP..."
+                                                required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-full">Publier le
+                                            commentaire</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!--         4. PAIEMENT CINETPAY SÉCURISÉ      -->
+    <!-- ========================================== -->
+    <div id="payment-modal" class="modal-overlay hidden">
+        <div class="modal-box bg-glass">
+            <div class="modal-header flex justify-between align-center">
+                <h3>Abonnement SCALIFY VIP</h3>
+                <button class="modal-close-btn" id="btn-close-payment-modal"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body text-center mt-1">
+                <span class="vip-badge">💎 ACCÈS ILLIMITÉ VIP</span>
+                <h4 class="mt-1">Paiement Sécurisé via CinetPay</h4>
+                <p class="text-sm text-muted">Montant à régler : <strong>5 000 FCFA</strong></p>
+
+                <div class="cinetpay-channels-info mt-15 bg-dark p-1 rounded">
+                    <div class="grid grid-4 gap-05 text-center">
+                        <div class="pay-channel-item">
+                            <span class="pay-icon">🌊</span>
+                            <span class="text-xs">Wave</span>
+                        </div>
+                        <div class="pay-channel-item">
+                            <span class="pay-icon">🍊</span>
+                            <span class="text-xs">Orange Money</span>
+                        </div>
+                        <div class="pay-channel-item">
+                            <span class="pay-icon">📱</span>
+                            <span class="text-xs">Free Money</span>
+                        </div>
+                        <div class="pay-channel-item">
+                            <span class="pay-icon">💳</span>
+                            <span class="text-xs">Carte Visa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-left mt-15">
+                    <label for="payment-phone-input">Numéro de téléphone Mobile Money</label>
+                    <div class="input-with-addon">
+                        <span class="addon">+221</span>
+                        <input type="tel" id="payment-phone-input" placeholder="77 123 45 67">
+                    </div>
+                </div>
+
+                <div class="form-group text-left mt-1">
+                    <label for="payment-access-key">Clé d'accès personnelle</label>
+                    <input type="text" id="payment-access-key" placeholder="SCL-XXXX-XXXX"
+                        style="letter-spacing:0.1em;text-transform:uppercase;">
+                    <span class="input-tip">Clé unique attribuée lors de votre inscription.</span>
+                </div>
+
+                <!-- Zone de statut du paiement -->
+                <div id="payment-status-zone" class="hidden mt-1">
+                    <div class="bg-dark p-1 rounded">
+                        <div class="payment-loader"></div>
+                        <p class="text-sm text-muted mt-05" id="payment-status-text">Redirection vers CinetPay...</p>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary w-full mt-1" id="btn-confirm-payment">
+                    <i data-lucide="lock" class="inline-icon"></i> Payer 5 000 FCFA via CinetPay
+                </button>
+                <p class="text-xs text-muted mt-1">
+                    <i data-lucide="shield" class="inline-icon"></i>
+                    Paiement 100% sécurisé via CinetPay — Wave, Orange Money, Free Money, Visa
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification system toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- ACCESS KEY NOTICE OVERLAY -->
+    <div id="access-key-notice" class="modal-overlay hidden">
+        <div class="modal-box bg-glass" style="max-width:460px;">
+            <div class="modal-header">
+                <h3>Votre Cle d'Acces Personnelle</h3>
+            </div>
+            <div class="modal-body text-center mt-1">
+                <p class="text-sm text-muted mb-1">Conservez cette cle en lieu sur. Elle sera requise pour activer votre
+                    abonnement et acceder aux fonctionnalites premium.</p>
+                <div class="bg-dark p-15 rounded" style="border:2px dashed var(--color-primary);">
+                    <h2 class="text-accent" id="access-key-display" style="letter-spacing:0.15em;">SCL-XXXX-XXXX</h2>
+                </div>
+                <p class="text-xs text-muted mt-1">Cette cle est unique a votre compte et ne peut pas etre modifiee.</p>
+                <button class="btn btn-primary w-full mt-15" id="btn-close-access-key">J'ai note ma cle</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING CHATBOT WIDGET -->
+    <button id="chatbot-toggle" class="chatbot-toggle-btn" title="Assistance rapide">
+        <i data-lucide="message-square" class="chatbot-icon"></i>
+    </button>
+    <div id="chatbot-panel" class="chatbot-panel hidden">
+        <div class="chatbot-header">
+            <div class="flex align-center gap-05">
+                <div class="chatbot-avatar">S</div>
+                <div>
+                    <strong>SCALIFY Assistant</strong>
+                    <span class="text-xs text-muted" style="display:block;">En ligne</span>
+                </div>
+            </div>
+            <button id="chatbot-close" class="chatbot-close-btn">&times;</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="chat-msg bot">Bienvenue sur SCALIFY. Comment puis-je vous aider ? Posez votre question sur les
+                abonnements, les produits ou la logistique.</div>
+        </div>
+        <div class="chatbot-input-row">
+            <input type="text" id="chatbot-input" placeholder="Ecrivez votre question...">
+            <button id="chatbot-send" class="btn btn-primary btn-sm">Envoyer</button>
+        </div>
+    </div>
+
+    <!-- Core App Logic Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

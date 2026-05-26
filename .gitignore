@@ -1,0 +1,29 @@
+# === FICHIERS SENSIBLES - NE JAMAIS COMMIT ===
+.env
+.env.local
+.env.production
+.env.*.local
+
+# === DEPENDANCES NODE ===
+node_modules/
+package-lock.json
+
+# === LOGS ===
+logs/
+*.log
+npm-debug.log*
+
+# === SYSTEME ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# === IDE ===
+.vscode/
+.idea/
+
+# === BUILD ===
+dist/
+build/

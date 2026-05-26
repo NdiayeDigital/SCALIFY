@@ -1,0 +1,19 @@
+{
+  "name": "scalify",
+  "version": "2.0.0",
+  "description": "SCALIFY - Plateforme SaaS E-commerce pour l'Afrique avec paiement CinetPay",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1"
+  },
+  "keywords": ["scalify", "ecommerce", "cinetpay", "senegal", "saas"],
+  "author": "SCALIFY Team",
+  "license": "ISC"
+}
