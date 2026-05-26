@@ -1415,7 +1415,8 @@ function setupPaymentSimulator() {
     const btnActivateSub = document.getElementById("btn-activate-subscription");
     if (btnActivateSub) {
         btnActivateSub.addEventListener("click", () => {
-            openPaymentModal();
+            // Rediriger vers le lien de paiement direct fourni par l'utilisateur
+            window.location.href = "http://cinetpay-aurore-pay.test/link/fjnb8rexh3njqlhe";
         });
     }
 
