@@ -2988,12 +2988,15 @@ html, body {
 
     /* Center Landing page header elements on mobile */
     .header-container {
-        position: relative !important;
-        flex-direction: column !important;
-        align-items: center !important;
+        display: flex !important;
+        flex-direction: row !important;
         justify-content: center !important;
+        align-items: center !important;
+        position: relative !important;
+        width: 100% !important;
+        height: 60px !important;
         padding: 5px 0 !important;
-        gap: 10px !important;
+        gap: 0 !important;
     }
 
     .main-header .logo {
@@ -3001,7 +3004,15 @@ html, body {
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
-        margin: 0 auto !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+    }
+
+    .main-header .logo .main-logo-img {
+        height: 45px !important;
     }
 
     .main-header .mobile-menu-toggle {
@@ -3010,6 +3021,19 @@ html, body {
         right: 15px !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
+        background: transparent !important;
+        border: none !important;
+        color: var(--color-white) !important;
+        z-index: 10001 !important;
+    }
+
+    .mobile-nav {
+        position: fixed !important;
+        top: 76px !important; /* Position perfectly below standard header */
+        left: 0 !important;
+        right: 0 !important;
+        background-color: var(--color-bg-deep) !important;
+        z-index: 9999 !important;
     }
 
     /* Dashboard Header centering on mobile */
@@ -3052,7 +3076,7 @@ html, body {
 
     /* Logos */
     .main-logo-img {
-        height: 75px !important; /* Ajustement pour les petits en-têtes mobiles */
+        height: 75px !important;
     }
 }
 
@@ -3064,32 +3088,42 @@ html, body {
 /* Center Landing Page Header Elements on Desktop */
 .main-header {
     height: auto !important;
-    padding: 15px 0 !important;
+    padding: 12px 0 !important;
 }
 
 .header-container {
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
     align-items: center !important;
-    justify-content: center !important;
     gap: 12px !important;
 }
 
 .main-header .logo {
     display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
     width: 100% !important;
+}
+
+.main-header .logo .main-logo-img {
+    height: 70px !important;
 }
 
 .nav-menu {
     display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
     gap: 30px !important;
+    width: 100% !important;
 }
 
 .nav-actions {
     display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
+    gap: 15px !important;
+    width: 100% !important;
 }
 
 /* Center Auth Page Logo completely */
