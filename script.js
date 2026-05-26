@@ -449,7 +449,6 @@ function showView(viewId, subForm = null) {
 }
 
 function appSwitchTab(tabId) {
-    // ── Vérification de l'abonnement VIP ──
     const restrictedTabs = [
         "tab-products", 
         "tab-calculator", 
@@ -460,18 +459,16 @@ function appSwitchTab(tabId) {
         "tab-academy"
     ];
 
-    if (restrictedTabs.includes(tabId) && (!USER_SESSION || !USER_SESSION.isPremium)) {
-        showToast("🔒 Version Pro : Veuillez payer votre accès pour débloquer cette page.", "warning");
-        // Rediriger vers l'onglet compte pour qu'ils voient le bouton de paiement
-        if (tabId !== "tab-account") {
-            appSwitchTab("tab-account");
-        }
-        return;
-    }
+    const isRestricted = restrictedTabs.includes(tabId);
+    const isUserPremium = USER_SESSION && USER_SESSION.isPremium;
 
     // Deactivate all tabs
     document.querySelectorAll(".tab-panel").forEach(panel => {
         panel.classList.remove("active");
+        panel.classList.remove("pro-restricted-panel");
+        // Supprimer l'overlay existant s'il y en a un
+        const overlay = panel.querySelector(".pro-overlay");
+        if (overlay) overlay.remove();
     });
     document.querySelectorAll(".menu-item[data-tab]").forEach(item => {
         item.classList.remove("active");
@@ -481,6 +478,44 @@ function appSwitchTab(tabId) {
     const activePanel = document.getElementById(tabId);
     if (activePanel) {
         activePanel.classList.add("active");
+        
+        // Si l'onglet est restreint et l'utilisateur n'est pas Premium, injecter l'overlay Pro
+        if (isRestricted && !isUserPremium) {
+            activePanel.classList.add("pro-restricted-panel");
+            
+            const proOverlay = document.createElement("div");
+            proOverlay.className = "pro-overlay";
+            proOverlay.innerHTML = `
+                <div class="pro-overlay-content">
+                    <div class="pro-icon-badge">🔒</div>
+                    <h2>Version PRO Requise</h2>
+                    <p>Propulsez votre business e-commerce avec tous les outils professionnels et automatisés de SCALIFY.</p>
+                    <div class="pro-features-list">
+                        <span>⚡ Produits Gagnants à fort potentiel</span>
+                        <span>⚡ IA Copilot (Génération de prompts & copies)</span>
+                        <span>⚡ IA Image (Création de visuels publicitaires)</span>
+                        <span>⚡ Analyses de Marché & Tendances locales</span>
+                        <span>⚡ Ecom Académie (Formation e-commerce VIP)</span>
+                        <span>⚡ Simulateur complet de rentabilité</span>
+                    </div>
+                    <button class="btn-unlock-pro-overlay" id="btn-unlock-pro-${tabId}">
+                        🚀 Débloquer la Version Pro (5 000 F)
+                    </button>
+                </div>
+            `;
+            activePanel.appendChild(proOverlay);
+            
+            // Écouteur pour rediriger vers le paiement direct
+            const unlockBtn = proOverlay.querySelector(".btn-unlock-pro-overlay");
+            if (unlockBtn) {
+                unlockBtn.addEventListener("click", () => {
+                    localStorage.setItem('scalify_payment_pending', 'true');
+                    localStorage.setItem('scalify_payment_email', USER_SESSION.email);
+                    localStorage.setItem('scalify_payment_time', new Date().getTime().toString());
+                    window.location.href = "http://cinetpay-aurore-pay.test/link/fjnb8rexh3njqlhe";
+                });
+            }
+        }
     }
     const activeMenu = document.querySelector(`.menu-item[data-tab="${tabId}"]`);
     if (activeMenu) {
@@ -660,6 +695,11 @@ function updateDashboardUI() {
     const accSub = document.getElementById("account-sub-status-label");
 
     if (USER_SESSION.isPremium) {
+        document.body.classList.add("is-premium");
+        // Supprimer tous les overlays actifs
+        document.querySelectorAll(".pro-overlay").forEach(overlay => overlay.remove());
+        document.querySelectorAll(".pro-restricted-panel").forEach(panel => panel.classList.remove("pro-restricted-panel"));
+
         subBadge.textContent = "Premium VIP 🇸🇳";
         subBadge.className = "badge badge-success-outline";
         subPill.textContent = "VIP ACTIF";
@@ -678,6 +718,7 @@ function updateDashboardUI() {
         const subActionZone = document.getElementById("subscription-action-zone");
         if (subActionZone) subActionZone.classList.add("hidden");
     } else {
+        document.body.classList.remove("is-premium");
         subBadge.textContent = "Freemium Inactif";
         subBadge.className = "badge badge-warning";
         subPill.textContent = "ESSAI LIMITE";
