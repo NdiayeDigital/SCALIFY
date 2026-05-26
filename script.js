@@ -63,6 +63,54 @@ function generateOTP() { return Math.floor(100000 + Math.random() * 900000).toSt
 // 1. DATA STORES (Sourcing, Products, and IA Models)
 const TRENDING_PRODUCTS = [
     {
+        id: "prod-ali-9",
+        name: "Masseur de Cou Vibrant 3 Têtes",
+        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80",
+        buyPrice: 660,
+        transportCost: 600,
+        localFees: 1500,
+        recommendedSalePrice: 4620,
+        competitors: "Faible",
+        status: "viral",
+        score: 9.5,
+        category: "Sport & Santé",
+        sourcingLink: "https://www.alibaba.com/product-detail/Best-Seller-3-Prong-Vibration-Neck_1601267216583.html?spm=a2700.prosearch.normal_offer.d_image.9f5a67af5lfzmM&priceId=bd869e6222354738aeb293f4208d61cd",
+        description: "Appareil de massage cervical vibrant à 3 têtes pour soulager instantanément la fatigue, le stress et les tensions du cou et des épaules.",
+        hooks: [
+            "💆‍♂️ Relâche immédiatement toute la tension accumulée dans ton cou après le travail !",
+            "POV: Tu as ton propre masseur thérapeutique à domicile pour moins de 5 000 FCFA.",
+            "Le cadeau parfait pour soulager les douleurs de cou et d'épaules de tes parents."
+        ],
+        scripts: [
+            "【Hook】: Place le masseur vibrant sur le cou et ferme les yeux de soulagement.\n【Corps】: 'Ce masseur à 3 têtes émet des vibrations relaxantes ciblées qui stimulent la circulation sanguine et détendent les muscles du cou en moins de 5 minutes. Super compact et fonctionne sur batterie.'\n【Appel à l'action】: 'Profitez de notre promo de livraison express à Dakar. Commandez vite !'"
+        ],
+        hashtags: ["#MasseurCou", "#DetenteDakar", "#SanteBienEtre", "#MassageSenegal", "#IdeeCadeauDakar"]
+    },
+    {
+        id: "prod-ali-10",
+        name: "Entraîneur de Cuisses Thigh Master Ajustable",
+        image: "https://images.unsplash.com/photo-1434608519344-49d77a699e1d?w=500&q=80",
+        buyPrice: 1080,
+        transportCost: 800,
+        localFees: 1500,
+        recommendedSalePrice: 7560,
+        competitors: "Moyen",
+        status: "stable",
+        score: 9.1,
+        category: "Sport & Santé",
+        sourcingLink: "https://www.alibaba.com/product-detail/Legs-Beauty-Tool-Thigh-Master-Adjustable_1601740627642.html?spm=a2700.prosearch.normal_offer.d_image.9f5a67af5lfzmM&priceId=bd869e6222354738aeb293f4208d61cd",
+        description: "Équipement d'exercice physique à résistance réglable pour tonifier les cuisses, les bras, le fessier et la poitrine à la maison.",
+        hooks: [
+            "💪 Sculpte tes cuisses et tonifie ton corps chez toi sans payer d'abonnement à la salle !",
+            "L'accessoire de fitness ultra-pratique et réglable pour s'entraîner à la maison.",
+            "POV: Tu fais ta routine de sport quotidienne devant ta télé à Dakar."
+        ],
+        scripts: [
+            "【Hook】: Presse l'appareil entre tes cuisses pour montrer la résistance active.\n【Corps】: 'Le Thigh Master est parfait pour tonifier l'intérieur des cuisses, renforcer les fessiers et raffermir les bras. Sa résistance est réglable selon ton niveau de force.'\n【Appel à l'action】: 'Paiement sécurisé Wave à la livraison. Cliquez pour commander le vôtre !'"
+        ],
+        hashtags: ["#FitnessDakar", "#SportALaMaison", "#ThighMasterSenegal", "#PerteDePoidsDakar", "#SanteSante"]
+    },
+    {
         id: "prod-ali-6",
         name: "Huile de Batana Organique - Repousse Cheveux",
         image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=500&q=80",
