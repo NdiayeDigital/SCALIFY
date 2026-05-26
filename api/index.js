@@ -296,14 +296,20 @@ app.get('/', (req, res) => {
 });
 
 // ── Démarrage du serveur ────────────────────────────────────
-app.listen(PORT, () => {
-    console.log('');
-    console.log('═══════════════════════════════════════════════');
-    console.log('  ⚡ SCALIFY Server démarré avec succès');
-    console.log(`  🌐 URL : http://localhost:${PORT}`);
-    console.log(`  🔑 CinetPay Site ID : ${CINETPAY_SITE_ID}`);
-    console.log(`  📡 Webhook URL : ${NOTIFY_URL}`);
-    console.log(`  🔒 Mode : ${process.env.NODE_ENV || 'development'}`);
-    console.log('═══════════════════════════════════════════════');
-    console.log('');
-});
+// Si exécuté localement (pas sur Vercel)
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log('');
+        console.log('═══════════════════════════════════════════════');
+        console.log('  ⚡ SCALIFY Server démarré avec succès');
+        console.log(`  🌐 URL : http://localhost:${PORT}`);
+        console.log(`  🔑 CinetPay Site ID : ${CINETPAY_SITE_ID}`);
+        console.log(`  📡 Webhook URL : ${NOTIFY_URL}`);
+        console.log(`  🔒 Mode : ${process.env.NODE_ENV || 'development'}`);
+        console.log('═══════════════════════════════════════════════');
+        console.log('');
+    });
+}
+
+// Pour Vercel Serverless Functions
+module.exports = app;

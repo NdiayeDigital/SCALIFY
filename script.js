@@ -1332,7 +1332,7 @@ function setupPaymentSimulator() {
         try {
             // ── Appeler NOTRE backend (pas CinetPay directement) ──
             // Le backend injecte les clés API de son côté
-            const response = await fetch('http://localhost:3000/api/payment/initialize', {
+            const response = await fetch('/api/payment/initialize', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1476,7 +1476,7 @@ async function checkPaymentReturn() {
 
         try {
             // Appeler notre backend pour vérifier (le backend utilise la clé API)
-            const response = await fetch('http://localhost:3000/api/payment/verify', {
+            const response = await fetch('/api/payment/verify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ transaction_id: txId })

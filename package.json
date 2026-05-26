@@ -2,10 +2,10 @@
   "name": "scalify",
   "version": "2.0.0",
   "description": "SCALIFY - Plateforme SaaS E-commerce pour l'Afrique avec paiement CinetPay",
-  "main": "server/server.js",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "node server/server.js"
+    "start": "node api/index.js",
+    "dev": "node api/index.js"
   },
   "dependencies": {
     "express": "^4.21.0",
