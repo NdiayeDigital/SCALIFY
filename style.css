@@ -2674,3 +2674,31 @@ input:disabled {
 body.is-premium .menu-item-badge-pro {
     display: none !important;
 }
+
+/* Wave Senegal Button styles */
+.btn-wave-pay {
+    background: #1cb0f6 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 15px rgba(28, 176, 246, 0.4) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    transition: var(--transition-fast) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 12px 24px !important;
+    cursor: pointer !important;
+    font-size: 1rem !important;
+}
+
+.btn-wave-pay:hover {
+    background: #009ce0 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(28, 176, 246, 0.6) !important;
+}
+
+.btn-wave-pay svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}

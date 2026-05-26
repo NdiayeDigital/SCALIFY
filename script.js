@@ -498,21 +498,29 @@ function appSwitchTab(tabId) {
                         <span>⚡ Ecom Académie (Formation e-commerce VIP)</span>
                         <span>⚡ Simulateur complet de rentabilité</span>
                     </div>
-                    <button class="btn-unlock-pro-overlay" id="btn-unlock-pro-${tabId}">
-                        🚀 Débloquer la Version Pro (5 000 F)
+                    <button class="btn btn-wave-pay w-full" id="btn-unlock-pro-${tabId}" style="margin-top: 15px;">
+                        <svg class="wave-svg" viewBox="0 0 100 100" style="width: 24px; height: 24px; fill: white; flex-shrink: 0; display: inline-block; vertical-align: middle;">
+                            <circle cx="50" cy="50" r="50" fill="#ffffff"/>
+                            <path d="M50,15 C33,15 25,27 25,45 C25,62 30,73 40,78 C36,79 30,81 28,83 C26,85 28,88 32,88 C40,88 45,83 48,81 C51,83 56,88 64,88 C68,88 70,85 68,83 C66,81 60,79 56,78 C66,73 71,62 71,45 C71,27 63,15 50,15 Z" fill="#1cb0f6"/>
+                            <path d="M50,32 C41,32 36,41 36,54 C36,66 41,72 50,72 C59,72 64,66 64,54 C64,41 59,32 50,32 Z" fill="#ffffff"/>
+                            <polygon points="46,38 54,38 50,44" fill="#ff9900"/>
+                            <circle cx="45" cy="30" r="3" fill="#000"/>
+                            <circle cx="55" cy="30" r="3" fill="#000"/>
+                        </svg>
+                        <span style="vertical-align: middle; margin-left: 8px;">Activer avec Wave (5 000 F)</span>
                     </button>
                 </div>
             `;
             activePanel.appendChild(proOverlay);
             
-            // Écouteur pour rediriger vers le paiement direct
-            const unlockBtn = proOverlay.querySelector(".btn-unlock-pro-overlay");
+            // Écouteur pour rediriger vers le paiement direct Wave
+            const unlockBtn = proOverlay.querySelector(".btn-wave-pay");
             if (unlockBtn) {
                 unlockBtn.addEventListener("click", () => {
                     localStorage.setItem('scalify_payment_pending', 'true');
                     localStorage.setItem('scalify_payment_email', USER_SESSION.email);
                     localStorage.setItem('scalify_payment_time', new Date().getTime().toString());
-                    window.location.href = "http://cinetpay-aurore-pay.test/link/fjnb8rexh3njqlhe";
+                    window.location.href = "https://pay.wave.com/m/M_sn_3AtJgZ5N3PNg/c/sn/";
                 });
             }
         }
@@ -1460,8 +1468,8 @@ function setupPaymentSimulator() {
             localStorage.setItem('scalify_payment_pending', 'true');
             localStorage.setItem('scalify_payment_email', USER_SESSION.email);
             localStorage.setItem('scalify_payment_time', new Date().getTime().toString());
-            // Rediriger vers le lien de paiement direct CinetPay
-            window.location.href = "http://cinetpay-aurore-pay.test/link/fjnb8rexh3njqlhe";
+            // Rediriger vers le lien de paiement direct Wave Sénégal
+            window.location.href = "https://pay.wave.com/m/M_sn_3AtJgZ5N3PNg/c/sn/";
         });
     }
 
