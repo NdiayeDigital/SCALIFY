@@ -63,6 +63,126 @@ function generateOTP() { return Math.floor(100000 + Math.random() * 900000).toSt
 // 1. DATA STORES (Sourcing, Products, and IA Models)
 const TRENDING_PRODUCTS = [
     {
+        id: "prod-ali-11",
+        name: "Baskets Légères & Respirantes - Style 2026",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+        buyPrice: 2700,
+        transportCost: 1500,
+        localFees: 1500,
+        recommendedSalePrice: 18900,
+        competitors: "Moyen",
+        status: "viral",
+        score: 9.4,
+        category: "Mode & Chaussures",
+        sourcingLink: "https://www.alibaba.com/product-detail/2026-Spring-Summer-Autumn-Light-Weight_1600769003073.html?spm=a2700.prosearch.normal_offer.d_image.452567af8st3Bq&priceId=ce5a2a92a23149deb5ca5ce0c71263bf",
+        description: "Baskets ultra-légères, respirantes et confortables pour le running, le sport ou les sorties quotidiennes à Dakar.",
+        hooks: [
+            "👟 Finis les maux de pieds ! Essaie ces baskets ultra légères et respirantes !",
+            "POV: Tu marches toute la journée à Dakar Plateau sans ressentir aucune fatigue.",
+            "Le confort absolu allié au style moderne pour tes séances de sport ou ton quotidien."
+        ],
+        scripts: [
+            "【Hook】: Montre la flexibilité de la semelle en la pliant facilement d'une main.\n【Corps】: 'Voici les nouvelles baskets respirantes modèle 2026. Conçues avec un tissu mesh ultra-aéré pour éviter la transpiration, et une semelle amortissante pour protéger tes articulations.'\n【Appel à l'action】: 'Plusieurs pointures disponibles. Paiement sécurisé Wave à la livraison. Commande ici !'"
+        ],
+        hashtags: ["#BasketsDakar", "#ChaussuresSenegal", "#SportDakar", "#ModeGalsen", "#DakarPlateau"]
+    },
+    {
+        id: "prod-ali-12",
+        name: "Genouillères de Protection Rembourrées (Paire)",
+        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80",
+        buyPrice: 720,
+        transportCost: 500,
+        localFees: 1500,
+        recommendedSalePrice: 5040,
+        competitors: "Faible",
+        status: "stable",
+        score: 9.0,
+        category: "Sport & Santé",
+        sourcingLink: "https://www.alibaba.com/product-detail/Women-Dancing-Knee-Pad-Foam-Volleyball_1600487195943.html?spm=a2700.prosearch.normal_offer.d_image.452567af8st3Bq&priceId=ce5a2a92a23149deb5ca5ce0c71263bf",
+        description: "Genouillères de protection rembourrées en mousse EVA, idéales pour le volley-ball, la danse, le yoga ou la gym à domicile.",
+        hooks: [
+            "🏐 Protège tes genoux des chocs et des blessures pendant le sport !",
+            "Le rembourrage parfait pour le yoga, la danse et le fitness sur sol dur.",
+            "POV: Tu fais tes séances d'entraînement à la maison en toute sécurité."
+        ],
+        scripts: [
+            "【Hook】: Laisse-toi tomber doucement sur les genoux sur un sol en carrelage pour montrer l'amorti.\n【Corps】: 'Ces genouillères de sport combinent une mousse haute densité ergonomique et un tissu stretch respirant pour un maintien parfait sans serrer ni glisser pendant l'effort.'\n【Appel à l'action】: 'Disponibles en plusieurs tailles. Livraison express partout au Sénégal !'"
+        ],
+        hashtags: ["#SportSenegal", "#VolleyDakar", "#YogaDakar #FitnessSenegal #ProtectionGenoux"]
+    },
+    {
+        id: "prod-ali-13",
+        name: "Stabilisateur de Caméra Gimbal FeiyuTech",
+        image: "https://images.unsplash.com/photo-1584438784894-089d6a128f3e?w=500&q=80",
+        buyPrice: 15000,
+        transportCost: 3500,
+        localFees: 2500,
+        recommendedSalePrice: 105000,
+        competitors: "Moyen",
+        status: "viral",
+        score: 9.6,
+        category: "Technologie & Photo",
+        sourcingLink: "https://www.alibaba.com/product-detail/Hot-Sale-Feiyu-Tech-Handheld-Waterproof_500015351924.html?spm=a2700.prosearch.normal_offer.d_image.74bc67afZRKSdY&priceId=de9b4a7df450428daa554e0f22b6894b",
+        description: "Stabilisateur à main étanche professionnel FeiyuTech à 3 axes pour des vidéos fluides et stables sur smartphone et caméras d'action.",
+        hooks: [
+            "📹 Le secret des influenceurs pour filmer des vidéos ultra-fluides sans aucun tremblement !",
+            "⚠️ Arrête de publier des vidéos e-commerce de mauvaise qualité. Regarde ce stabilisateur professionnel.",
+            "POV: Tu transformes tes simples vidéos de smartphone en véritable rendu cinéma."
+        ],
+        scripts: [
+            "【Hook】: Cours en filmant avec ton téléphone dans le stabilisateur pour montrer la fluidité absolue.\n【Corps】: 'Ce gimbal étanche FeiyuTech stabilise ton image sur 3 axes. Il suit automatiquement ton visage ou tes objets, et sa batterie longue durée te permet de filmer toute la journée à Dakar.'\n【Appel à l'action】: 'Matériel professionnel haut de gamme. Livraison sécurisée sous 24h.'"
+        ],
+        hashtags: ["#VideoDakar #InfluenceurSenegal #VlogSenegal #HighTechDakar #ScalifyPro"]
+    },
+    {
+        id: "prod-ali-14",
+        name: "Mini Power Bank Capsule sans Fil",
+        image: "https://images.unsplash.com/photo-1609592424087-3e1140026dbd?w=500&q=80",
+        buyPrice: 1200,
+        transportCost: 800,
+        localFees: 1500,
+        recommendedSalePrice: 8400,
+        competitors: "Faible",
+        status: "viral",
+        score: 9.5,
+        category: "Technologie & Accessoires",
+        sourcingLink: "https://www.alibaba.com/product-detail/Cross-border-New-Pocket-Wireless-Capsule_1601780690180.html?spm=a2700.prosearch.normal_offer.d_image.74bc67afZRKSdY&priceId=f84a21ef01f044c582a62cfad42a1651",
+        description: "Chargeur de poche ultra-compact sans fil en forme de capsule. Se branche directement sur votre téléphone sans câbles encombrants.",
+        hooks: [
+            "🔋 Ne tombe plus jamais en panne de batterie dans la rue à Dakar !",
+            "Le chargeur portable le plus petit du monde qui tient directement dans ta poche de jean.",
+            "POV: Tu charges ton téléphone tout en continuant à scroller sur TikTok sans aucun fil qui traîne."
+        ],
+        scripts: [
+            "【Hook】: Branche la petite capsule directement au bas de ton téléphone en une seconde.\n【Corps】: 'Ce mini power bank capsule charge ton téléphone instantanément. Plus besoin de transporter de gros chargeurs ou de câbles emmêlés. Il est super léger et idéal pour les sorties.'\n【Appel à l'action】: 'Disponible pour iPhone et Type-C. Livraison rapide partout au Sénégal !'"
+        ],
+        hashtags: ["#PowerbankDakar #AccessoiresTelephone #TechSenegal #DakarGalsen #UtileAuQuotidien"]
+    },
+    {
+        id: "prod-ali-15",
+        name: "Tapis Masseur de Pieds EMS Intelligent",
+        image: "https://images.unsplash.com/photo-1519823551278-64ac9283ca44?w=500&q=80",
+        buyPrice: 900,
+        transportCost: 700,
+        localFees: 1500,
+        recommendedSalePrice: 6300,
+        competitors: "Moyen",
+        status: "viral",
+        score: 9.2,
+        category: "Sport & Santé",
+        sourcingLink: "https://www.alibaba.com/product-detail/Intelligent-USB-Charging-Massage-Pad-with_1601398896628.html?spm=a2700.prosearch.normal_offer.d_image.74bc67afZRKSdY&priceId=f84a21ef01f044c582a62cfad42a1651",
+        description: "Tapis de massage plantaire intelligent par stimulation électrique musculaire (EMS) pour soulager la fatigue et améliorer la circulation.",
+        hooks: [
+            "🦶 Soulage tes jambes lourdes et tes pieds fatigués après une longue journée debout !",
+            "Le tapis de massage intelligent qui stimule tes muscles pour une détente absolue en 15 minutes.",
+            "POV: Tu t'offres une séance de réflexologie plantaire à la maison tous les soirs."
+        ],
+        scripts: [
+            "【Hook】: Pose tes pieds nus sur le tapis noir et montre la télécommande qui s'allume.\n【Corps】: 'Ce tapis masseur utilise des impulsions électriques douces (EMS) pour masser les points d'acupuncture des pieds. Il aide à relâcher la fatigue des jambes et améliore le sommeil.'\n【Appel à l'action】: 'Paiement à la livraison. Cliquez pour commander le vôtre au Sénégal !'"
+        ],
+        hashtags: ["#MassagePieds #EMSMatDakar #BienEtreSenegal #DeterDakar #SantePhysique"]
+    },
+    {
         id: "prod-ali-9",
         name: "Masseur de Cou Vibrant 3 Têtes",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80",
