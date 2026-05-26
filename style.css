@@ -1546,12 +1546,30 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--transition-normal);
+}
+
+@media (max-width: 576px) {
+    .prod-img-box {
+        height: 150px; /* Hauteur plus compacte sur mobile pour le confort visuel */
+    }
+}
+
+@media (min-width: 1200px) {
+    .prod-img-box {
+        height: 210px; /* Plus d'espace sur les moniteurs haute résolution */
+    }
 }
 
 .prod-img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prod-card:hover .prod-img-box img {
+    transform: scale(1.08); /* Effet zoom ultra-premium fluide au survol */
 }
 
 .prod-placeholder-img {
