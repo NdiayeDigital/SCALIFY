@@ -576,6 +576,12 @@
                         </button>
                         <h2 class="page-title" id="app-page-title">Dashboard</h2>
                     </div>
+                    
+                    <!-- Centered Logo inside Dashboard Top Header (Mobile only) -->
+                    <div class="app-header-logo">
+                        <img src="logo.jpg" alt="SCALIFY" class="main-logo-img">
+                    </div>
+                    
                     <div class="app-header-actions flex align-center gap-1">
                         <div class="header-metric bg-glass px-1 py-05 rounded flex align-center gap-05">
                             <span class="text-muted text-sm">Score Ecom :</span>
@@ -622,45 +628,8 @@
                             </div>
                         </div>
 
-                        <!-- Recommendations & Recents -->
-                        <div class="grid grid-3-2 gap-15 mt-15">
-                            <div class="card bg-glass">
-                                <div class="card-header flex justify-between align-center">
-                                    <h3>🤖 Recommandations IA Personnalisées</h3>
-                                    <span class="badge badge-accent">V2 Actif</span>
-                                </div>
-                                <div class="card-body">
-                                    <div class="recommendations-list">
-                                        <div class="rec-item">
-                                            <div class="rec-icon">💡</div>
-                                            <div class="rec-details">
-                                                <h4>Opportunité Ramadan / Tabaski</h4>
-                                                <p>Le marché sénégalais montre une hausse de demande de 180% sur la
-                                                    catégorie "Appareils de cuisine portables". C'est le moment
-                                                    d'importer le Mini Mixeur Électrique.</p>
-                                            </div>
-                                        </div>
-                                        <div class="rec-item">
-                                            <div class="rec-icon">⚠️</div>
-                                            <div class="rec-details">
-                                                <h4>Alerte Saturation : Mini Projecteurs</h4>
-                                                <p>Les coûts de publicité TikTok à Dakar augmentent sur la niche
-                                                    "Projecteurs Led". Nous vous conseillons de réduire le budget sur
-                                                    cette catégorie.</p>
-                                            </div>
-                                        </div>
-                                        <div class="rec-item">
-                                            <div class="rec-icon">🔥</div>
-                                            <div class="rec-details">
-                                                <h4>Optimisation de marge</h4>
-                                                <p>En négociant le fret aérien à 9500 FCFA/kg (au lieu de 11 000 FCFA),
-                                                    votre ROI sur les Smartwatches grimpe de 18%.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <!-- Recents Section -->
+                        <div class="mt-15">
                             <div class="card bg-glass">
                                 <div class="card-header flex justify-between align-center">
                                     <h3>📦 Produits Récemment Analysés</h3>
@@ -1034,7 +1003,7 @@
 
                     <!-- ================= TAB: SIMULATION ================= -->
                     <div id="tab-simulation" class="tab-panel">
-                        <div class="grid grid-3-2 gap-2">
+                        <div class="grid grid-3-2 gap-2" id="sim-main-grid">
                             <!-- Sim input -->
                             <div class="card bg-glass">
                                 <div class="card-header">
@@ -1198,7 +1167,7 @@
                                 </div>
 
                                 <h3 class="mt-2 mb-1">🔥 Analyse TikTok Ecom Sénégal</h3>
-                                <div class="grid grid-2 gap-15">
+                                <div class="grid grid-2 gap-15" id="mkt-tiktok-grid">
                                     <div class="bg-glass p-1 rounded">
                                         <h4 class="text-accent mb-05">⭐ Niches Sous-exploitées à fort ROI</h4>
                                         <ul class="niche-list">

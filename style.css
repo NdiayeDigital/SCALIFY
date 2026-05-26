@@ -2974,8 +2974,134 @@ html, body {
         -webkit-overflow-scrolling: touch;
     }
 
+    /* Keep Business Simulator and Forecast on the same line on mobile */
+    #sim-main-grid {
+        grid-template-columns: 1.2fr 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Keep TikTok Analysis and Market Opportunities on the same line on mobile */
+    #mkt-tiktok-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Center Landing page header elements on mobile */
+    .header-container {
+        position: relative !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 5px 0 !important;
+        gap: 10px !important;
+    }
+
+    .main-header .logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .main-header .mobile-menu-toggle {
+        display: block !important;
+        position: absolute !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+
+    /* Dashboard Header centering on mobile */
+    .app-header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: auto !important;
+        padding: 10px !important;
+        gap: 8px !important;
+    }
+
+    .app-header-logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        order: -1; /* Puts it at the top center */
+    }
+
+    .app-header-logo .main-logo-img {
+        height: 60px !important;
+    }
+
+    .app-header > div:first-child {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .app-header-actions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
     /* Logos */
     .main-logo-img {
         height: 75px !important; /* Ajustement pour les petits en-têtes mobiles */
     }
+}
+
+/* Hide Dashboard Mobile Center Logo on Desktop */
+.app-header-logo {
+    display: none;
+}
+
+/* Center Landing Page Header Elements on Desktop */
+.main-header {
+    height: auto !important;
+    padding: 15px 0 !important;
+}
+
+.header-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+}
+
+.main-header .logo {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.nav-menu {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 30px !important;
+}
+
+.nav-actions {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* Center Auth Page Logo completely */
+.auth-logo {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+
+.auth-logo .main-logo-img {
+    height: 100px !important;
+    margin: 0 auto !important;
 }
