@@ -2974,16 +2974,16 @@ html, body {
         -webkit-overflow-scrolling: touch;
     }
 
-    /* Keep Business Simulator and Forecast on the same line on mobile */
+    /* Stack Business Simulator and Forecast vertically on mobile for perfect legibility */
     #sim-main-grid {
-        grid-template-columns: 1.2fr 1fr !important;
-        gap: 10px !important;
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
     }
 
-    /* Keep TikTok Analysis and Market Opportunities on the same line on mobile */
+    /* Stack TikTok Analysis and Market Opportunities vertically on mobile */
     #mkt-tiktok-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 10px !important;
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
     }
 
     /* Center Landing page header elements on mobile */
