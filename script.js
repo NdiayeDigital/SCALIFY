@@ -63,6 +63,78 @@ function generateOTP() { return Math.floor(100000 + Math.random() * 900000).toSt
 // 1. DATA STORES (Sourcing, Products, and IA Models)
 const TRENDING_PRODUCTS = [
     {
+        id: "prod-ali-6",
+        name: "Huile de Batana Organique - Repousse Cheveux",
+        image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=500&q=80",
+        buyPrice: 900,
+        transportCost: 600,
+        localFees: 1500,
+        recommendedSalePrice: 6300,
+        competitors: "Faible",
+        status: "viral",
+        score: 9.7,
+        category: "Beauté & Soins",
+        sourcingLink: "https://www.alibaba.com/product-detail/GUOCUI-BIO-TECH-Organic-Vegan-10_1601696595714.html?spm=a2700.prosearch.normal_offer.d_image.9f5a67af5lfzmM&priceId=a927e7ee36054ba5ae880896a0ab473b",
+        description: "Huile végétale précieuse de Batana, 100% végane et organique, réputée pour stimuler la pousse des cheveux et fortifier le cuir chevelu.",
+        hooks: [
+            "🌿 Le secret ancestral pour faire pousser et épaissir tes cheveux naturellement !",
+            "⚠️ Arrête de dépenser des fortunes dans des produits chimiques qui abîment tes cheveux.",
+            "POV: Tu lances ton traitement à l'huile de Batana et tu vois la différence en seulement 3 semaines."
+        ],
+        scripts: [
+            "【Hook】: Applique quelques gouttes d'huile dorée et masse doucement le cuir chevelu.\n【Corps】: 'Voici l'huile de Batana organique. Recommandée pour stopper la chute des cheveux, elle répare les pointes sèches et redonne de la brillance. Un soin 100% naturel adapté à tous les types de cheveux.'\n【Appel à l'action】: 'Disponible immédiatement à Dakar. Commande le tien aujourd'hui !'"
+        ],
+        hashtags: ["#CheveuxNaturels", "#RepousseCheveux", "#BatanaOilSenegal", "#BeauteGalsen", "#SoinsNaturels"]
+    },
+    {
+        id: "prod-ali-7",
+        name: "Patchs Anti-Points Noirs pour le Nez",
+        image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=500&q=80",
+        buyPrice: 600,
+        transportCost: 400,
+        localFees: 1500,
+        recommendedSalePrice: 4200,
+        competitors: "Moyen",
+        status: "stable",
+        score: 9.0,
+        category: "Beauté & Soins",
+        sourcingLink: "https://www.alibaba.com/product-detail/OEM-Remove-Blackheads-Nose-Sticks-Soft_1600574844792.html?spm=a2700.prosearch.normal_offer.d_image.9f5a67af5lfzmM&priceId=a927e7ee36054ba5ae880896a0ab473b",
+        description: "Bandelettes adhésives nettoyantes en profondeur pour extraire instantanément les impuretés et points noirs du nez.",
+        hooks: [
+            "👃 Regarde tout ce que ce patch extrait de mon nez en une seule fois ! C'est satisfaisant !",
+            "Le moyen le plus rapide et le moins cher de nettoyer ton nez à la maison.",
+            "POV: Tu en as marre d'avoir des points noirs visibles sur le visage."
+        ],
+        scripts: [
+            "【Hook】: Humidifie ton nez et applique la bandelette adhésive noire.\n【Corps】: 'Ces patchs nez éliminent les points noirs et nettoient les pores obstrués en profondeur. Laisse sécher 10 minutes, retire doucement et admire le résultat net et propre.'\n【Appel à l'action】: 'Paiement à la livraison partout au Sénégal. Clique sur commander !'"
+        ],
+        hashtags: ["#PointsNoirs #SoinNez #SkincareDakar #PeauClaire #RoutineVisage"]
+    },
+    {
+        id: "prod-ali-8",
+        name: "Sérum Visage au Curcuma & Miel",
+        image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80",
+        buyPrice: 720,
+        transportCost: 500,
+        localFees: 1500,
+        recommendedSalePrice: 5040,
+        competitors: "Faible",
+        status: "viral",
+        score: 9.5,
+        category: "Beauté & Soins",
+        sourcingLink: "https://www.alibaba.com/product-detail/Hot-Sale-Private-Label-Organic-Facial_1601149984424.html?spm=a2700.prosearch.normal_offer.d_image.9f5a67af5lfzmM&priceId=a927e7ee36054ba5ae880896a0ab473b",
+        description: "Sérum réparateur et éclaircissant naturel au curcuma pour harmoniser le teint, atténuer les taches sombres et hydrater la peau.",
+        hooks: [
+            "✨ Dis adieu aux taches et retrouve un teint éclatant et uniforme avec le curcuma !",
+            "Le sérum indispensable pour lutter contre les taches sombres et l'hyperpigmentation.",
+            "POV: Tu utilises ce sérum naturel matin et soir et ton teint brille sous le soleil de Dakar."
+        ],
+        scripts: [
+            "【Hook】: Applique le sérum sur les joues et montre le teint lumineux instantané.\n【Corps】: 'Ce sérum facial à base de curcuma bio et de miel est formulé pour estomper les taches sombres, réduire l'acné et unifier le teint. Sa texture légère pénètre rapidement sans laisser de film gras.'\n【Appel à l'action】: 'Stock limité au Sénégal. Réserve ton flacon aujourd'hui !'"
+        ],
+        hashtags: ["#SerumCurcuma", "#AntiTachesDakar", "#TeintEclatant", "#SkincareSenegal", "#GalsenBeauty"]
+    },
+    {
         id: "prod-ali-1",
         name: "Lunettes Cat-Eye Photochromiques Partagas",
         image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80",
