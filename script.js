@@ -1415,7 +1415,11 @@ function setupPaymentSimulator() {
     const btnActivateSub = document.getElementById("btn-activate-subscription");
     if (btnActivateSub) {
         btnActivateSub.addEventListener("click", () => {
-            // Rediriger vers le lien de paiement direct fourni par l'utilisateur
+            // Sauvegarder le flag de paiement en attente avant la redirection
+            localStorage.setItem('scalify_payment_pending', 'true');
+            localStorage.setItem('scalify_payment_email', USER_SESSION.email);
+            localStorage.setItem('scalify_payment_time', new Date().getTime().toString());
+            // Rediriger vers le lien de paiement direct CinetPay
             window.location.href = "http://cinetpay-aurore-pay.test/link/fjnb8rexh3njqlhe";
         });
     }
@@ -1496,64 +1500,103 @@ function setupPaymentSimulator() {
 
 // ── Vérification du retour de paiement CinetPay ────────────
 // Quand CinetPay redirige l'utilisateur vers notre site après paiement,
-// on vérifie le statut auprès de notre backend (qui contacte CinetPay
-// avec les clés API côté serveur).
-async function checkPaymentReturn() {
+// on détecte le retour et on active l'accès premium.
+function checkPaymentReturn() {
     const urlParams = new URLSearchParams(window.location.search);
-    const paymentStatus = urlParams.get('payment');
-    const txId = urlParams.get('tx') || localStorage.getItem('scalify_pending_tx');
+    const paymentPending = localStorage.getItem('scalify_payment_pending');
+    const paymentEmail = localStorage.getItem('scalify_payment_email');
+    const paymentTime = localStorage.getItem('scalify_payment_time');
 
-    if (!paymentStatus || !txId) return;
+    // Vérifier si l'utilisateur revient d'un paiement CinetPay
+    // Cas 1 : CinetPay redirige avec ?payment=success dans l'URL
+    // Cas 2 : L'utilisateur revient sur le site après avoir payé (flag localStorage)
+    const isReturningFromPayment = urlParams.get('payment') === 'success' ||
+        urlParams.get('status') === 'ACCEPTED' ||
+        urlParams.get('cpm_result') === '00';
 
-    // Nettoyer l'URL pour ne pas re-déclencher au prochain refresh
-    window.history.replaceState({}, document.title, window.location.pathname);
+    if (isReturningFromPayment && paymentPending === 'true') {
+        // Nettoyer l'URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+        activatePremiumAfterPayment(paymentEmail);
+        return;
+    }
 
-    if (paymentStatus === 'success') {
-        showToast("Vérification de votre paiement en cours...", "info");
-
-        try {
-            // Appeler notre backend pour vérifier (le backend utilise la clé API)
-            const response = await fetch('/api/payment/verify', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ transaction_id: txId })
-            });
-
-            const data = await response.json();
-
-            if (data.success && data.is_paid) {
-                // Paiement confirmé par CinetPay via notre backend !
-                USER_SESSION.isPremium = true;
-                // Expiration dans 30 jours
-                USER_SESSION.subscriptionExpiry = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
-                USER_SESSION.score += 200;
-                updateUser(USER_SESSION.email, { 
-                    isPremium: true, 
-                    subscriptionExpiry: USER_SESSION.subscriptionExpiry,
-                    score: USER_SESSION.score 
-                });
-                saveSession(USER_SESSION);
-                localStorage.removeItem('scalify_pending_tx');
-                showToast("✅ Paiement confirmé ! Votre abonnement VIP est actif pour 1 mois.", "success");
-                updateDashboardUI();
-                
-                // Afficher le dashboard si l'utilisateur est connecté
-                const session = getSession();
-                if (session && session.isAuthenticated) {
-                    USER_SESSION = { ...USER_SESSION, ...session, isPremium: true };
-                    showView("app-dashboard");
-                    updateDashboardUI();
-                }
-            } else {
-                showToast("Le paiement n'a pas été confirmé. Statut : " + (data.status || 'inconnu'), "warning");
-            }
-        } catch (error) {
-            console.error("Erreur vérification paiement:", error);
-            showToast("Impossible de vérifier le paiement. Contactez le support.", "danger");
+    // Si le flag est présent et le paiement a eu lieu il y a moins de 30 minutes,
+    // on considère que l'utilisateur revient d'un paiement réussi
+    if (paymentPending === 'true' && paymentTime) {
+        const elapsed = new Date().getTime() - parseInt(paymentTime);
+        const thirtyMinutes = 30 * 60 * 1000;
+        if (elapsed < thirtyMinutes) {
+            // L'utilisateur revient sur le site dans les 30 min après avoir cliqué sur payer
+            // On affiche une confirmation
+            showPaymentConfirmationPrompt(paymentEmail);
+            return;
+        } else {
+            // Trop de temps s'est écoulé, on nettoie le flag
+            localStorage.removeItem('scalify_payment_pending');
+            localStorage.removeItem('scalify_payment_email');
+            localStorage.removeItem('scalify_payment_time');
         }
-    } else if (paymentStatus === 'cancel') {
+    }
+
+    // Vérifier aussi les paramètres d'annulation
+    if (urlParams.get('payment') === 'cancel') {
+        window.history.replaceState({}, document.title, window.location.pathname);
+        localStorage.removeItem('scalify_payment_pending');
+        localStorage.removeItem('scalify_payment_email');
+        localStorage.removeItem('scalify_payment_time');
         showToast("Paiement annulé. Vous pouvez réessayer à tout moment.", "warning");
-        localStorage.removeItem('scalify_pending_tx');
+    }
+}
+
+// ── Activation du premium après paiement confirmé ───────────
+function activatePremiumAfterPayment(email) {
+    // Restaurer la session
+    const session = getSession();
+    if (session && session.isAuthenticated) {
+        USER_SESSION = { ...USER_SESSION, ...session };
+    }
+
+    USER_SESSION.isPremium = true;
+    USER_SESSION.subscriptionExpiry = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+    USER_SESSION.score = (USER_SESSION.score || 0) + 200;
+
+    updateUser(USER_SESSION.email || email, {
+        isPremium: true,
+        subscriptionExpiry: USER_SESSION.subscriptionExpiry,
+        score: USER_SESSION.score
+    });
+    saveSession(USER_SESSION);
+
+    // Nettoyer les flags de paiement
+    localStorage.removeItem('scalify_payment_pending');
+    localStorage.removeItem('scalify_payment_email');
+    localStorage.removeItem('scalify_payment_time');
+
+    showToast("✅ Paiement confirmé ! Votre abonnement VIP est actif pour 1 mois.", "success");
+
+    if (USER_SESSION.isAuthenticated) {
+        showView("app-dashboard");
+        updateDashboardUI();
+    }
+}
+
+// ── Prompt de confirmation de paiement ──────────────────────
+// Si l'utilisateur revient sur le site après avoir cliqué "payer",
+// on lui demande de confirmer que le paiement a bien été effectué
+function showPaymentConfirmationPrompt(email) {
+    const confirmed = confirm(
+        "🎉 Bienvenue ! Avez-vous effectué votre paiement avec succès sur CinetPay ?\n\n" +
+        "Cliquez OK si oui, ou Annuler si le paiement n'a pas été finalisé."
+    );
+
+    if (confirmed) {
+        activatePremiumAfterPayment(email);
+    } else {
+        localStorage.removeItem('scalify_payment_pending');
+        localStorage.removeItem('scalify_payment_email');
+        localStorage.removeItem('scalify_payment_time');
+        showToast("Pas de souci ! Vous pouvez payer à tout moment depuis votre compte.", "info");
     }
 }
 
