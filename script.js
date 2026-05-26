@@ -449,6 +449,26 @@ function showView(viewId, subForm = null) {
 }
 
 function appSwitchTab(tabId) {
+    // ── Vérification de l'abonnement VIP ──
+    const restrictedTabs = [
+        "tab-products", 
+        "tab-calculator", 
+        "tab-marketing-ia", 
+        "tab-image-ia", 
+        "tab-simulation", 
+        "tab-market-trends", 
+        "tab-academy"
+    ];
+
+    if (restrictedTabs.includes(tabId) && (!USER_SESSION || !USER_SESSION.isPremium)) {
+        showToast("🔒 Version Pro : Veuillez payer votre accès pour débloquer cette page.", "warning");
+        // Rediriger vers l'onglet compte pour qu'ils voient le bouton de paiement
+        if (tabId !== "tab-account") {
+            appSwitchTab("tab-account");
+        }
+        return;
+    }
+
     // Deactivate all tabs
     document.querySelectorAll(".tab-panel").forEach(panel => {
         panel.classList.remove("active");
