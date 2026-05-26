@@ -1,0 +1,90 @@
+{
+  "categories": [
+    {
+      "name": "Sourcing & Fournisseurs",
+      "keywords": ["sourcing", "fournisseur", "chine", "acheter", "alibaba", "1688", "agent", "turquie", "yiwu", "guangzhou"],
+      "qa": [
+        {
+          "keywords": ["comment trouver", "rechercher", "trouver un fournisseur"],
+          "answer": "Pour trouver des fournisseurs fiables, vous pouvez utiliser Alibaba (sécurisé avec Trade Assurance) ou 1688 (meilleurs prix mais en chinois, nécessite un agent de sourcing). Pour la Turquie, visitez des sites comme Laleli ou utilisez des agents sur place à Istanbul."
+        },
+        {
+          "keywords": ["agent", "sourcing agent", "le role"],
+          "answer": "Un agent de sourcing en Chine ou en Turquie inspecte la qualité de vos produits, regroupe vos colis de différents fournisseurs, et les livre à votre transitaire (cargo)."
+        },
+        {
+          "keywords": ["1688", "alibaba", "difference"],
+          "answer": "Alibaba est destiné aux acheteurs internationaux (anglais, prix plus élevés, paiement facile par carte). 1688 est la version locale chinoise (chinois, prix d'usine très bas, nécessite un agent local pour payer et recevoir la marchandise)."
+        }
+      ]
+    },
+    {
+      "name": "Transport & Transitaires",
+      "keywords": ["transitaire", "cargo", "fret", "aerien", "maritime", "bateau", "avion", "delai", "tarifs", "gp", "kilo", "kg"],
+      "qa": [
+        {
+          "keywords": ["prix", "tarif", "kilo", "cout", "combien"],
+          "answer": "Pour l'axe Chine-Sénégal : Le fret aérien coûte environ 8 500 à 10 000 FCFA/kg (délais de 7 à 12 jours). Le fret maritime coûte entre 350 000 et 450 000 FCFA par mètre cube (CBM) (délais de 35 à 45 jours)."
+        },
+        {
+          "keywords": ["transitaire senegal", "adresse chine", "recommander"],
+          "answer": "Des transitaires populaires pour le Sénégal incluent : GP (Global Transit), DHL, Aramex, et de nombreux cargos privés basés à Yiwu et Guangzhou ayant des bureaux à Dakar (Colobane, HLM, Centenaire)."
+        },
+        {
+          "keywords": ["douane", "dedouanement", "taxe"],
+          "answer": "Avec les transitaires de type 'Cargo Privé', le tarif au kilo ou au CBM inclut généralement déjà le dédouanement (formule clé en main). Vous n'avez pas de frais de douane supplémentaires à payer à l'arrivée à Dakar."
+        }
+      ]
+    },
+    {
+      "name": "Marketing & Publicite",
+      "keywords": ["pub", "publicite", "facebook ads", "tiktok ads", "campagne", "budget", "ciblage", "pixel", "crea", "video", "ads"],
+      "qa": [
+        {
+          "keywords": ["facebook", "ciblage senegal", "interet"],
+          "answer": "Pour cibler le Sénégal sur Facebook Ads, commencez par un ciblage large (Dakar uniquement ou Sénégal entier sans restreindre les intérêts) si votre produit est grand public. Mettez le pixel pour suivre vos ventes sur votre landing page."
+        },
+        {
+          "keywords": ["budget", "commencer", "tester un produit"],
+          "answer": "Pour tester un produit au Sénégal, prévoyez un budget de 5$ à 10$ par jour pendant 2 à 3 jours sur Facebook ou TikTok Ads. Si vous n'avez pas de commandes ou de messages WhatsApp qualifiés après cela, changez de produit ou de vidéo publicitaire."
+        },
+        {
+          "keywords": ["tiktok", "senegal", "ads manager"],
+          "answer": "TikTok Ads est extrêmement performant au Sénégal car l'audience y est très active. Créez des vidéos de démonstration courtes (format UGC) de 15 à 30 secondes avec un appel à l'action clair vers votre WhatsApp."
+        }
+      ]
+    },
+    {
+      "name": "Livraison & Vente (COD)",
+      "keywords": ["livraison", "livreur", "dakar", "taux", "retour", "refus", "client", "appeler", "cod", "paiement a la livraison"],
+      "qa": [
+        {
+          "keywords": ["livreur dakar", "tarif livraison", "combien"],
+          "answer": "La livraison à Dakar coûte généralement entre 1 500 FCFA et 2 000 FCFA. Pour la banlieue (Rufisque, Keur Massar), comptez 2 500 FCFA. Il est recommandé de travailler avec une agence de livraison structurée pour suivre vos colis."
+        },
+        {
+          "keywords": ["taux de livraison", "ameliorer", "retours", "refus"],
+          "answer": "Pour réduire les retours et augmentations de taux de livraison (viser > 80%) : 1) Appelez le client immédiatement après la commande pour confirmer son adresse. 2) Rappelez-le le matin de la livraison. 3) Livrez sous 24h maximum."
+        },
+        {
+          "keywords": ["cod", "cash on delivery", "fonctionnement"],
+          "answer": "Le COD (Paiement à la livraison) est le modèle roi au Sénégal. Les clients n'aiment pas payer en ligne à l'avance. Le livreur apporte le colis, le client vérifie et paie en espèces ou via Wave/Orange Money au livreur."
+        }
+      ]
+    },
+    {
+      "name": "Strategie E-commerce Generale",
+      "keywords": ["commencer", "e-commerce senegal", "debutant", "marge", "calculer", "benefice", "produit gagnant"],
+      "qa": [
+        {
+          "keywords": ["produit gagnant", "qu'est ce que", "gagnant"],
+          "answer": "Un produit gagnant (Winning Product) a trois critères : 1) Un effet 'Wow' ou résout un problème douloureux. 2) Difficile à trouver dans les marchés locaux (Sandaga, Colobane). 3) Permet de faire une marge confortable (vendu 3x à 4x son prix d'achat)."
+        },
+        {
+          "keywords": ["calcul", "marge", "prix de vente"],
+          "answer": "Prix de vente = Prix d'achat + Coût de transport + Coût publicitaire (CAC) + Frais de livraison + Marge bénéficiaire (qui doit être d'au moins 5 000 FCFA par produit pour être rentable)."
+        }
+      ]
+    }
+  ]
+}

@@ -1670,99 +1670,25 @@ function setupPaymentSimulator() {
 function checkPaymentReturn() {
     const urlParams = new URLSearchParams(window.location.search);
     const paymentPending = localStorage.getItem('scalify_payment_pending');
-    const paymentEmail = localStorage.getItem('scalify_payment_email');
-    const paymentTime = localStorage.getItem('scalify_payment_time');
-
-    // Vérifier si l'utilisateur revient d'un paiement CinetPay
-    // Cas 1 : CinetPay redirige avec ?payment=success dans l'URL
-    // Cas 2 : L'utilisateur revient sur le site après avoir payé (flag localStorage)
-    const isReturningFromPayment = urlParams.get('payment') === 'success' ||
-        urlParams.get('status') === 'ACCEPTED' ||
-        urlParams.get('cpm_result') === '00';
-
-    if (isReturningFromPayment && paymentPending === 'true') {
-        // Nettoyer l'URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-        activatePremiumAfterPayment(paymentEmail);
-        return;
-    }
-
-    // Si le flag est présent et le paiement a eu lieu il y a moins de 30 minutes,
-    // on considère que l'utilisateur revient d'un paiement réussi
-    if (paymentPending === 'true' && paymentTime) {
-        const elapsed = new Date().getTime() - parseInt(paymentTime);
-        const thirtyMinutes = 30 * 60 * 1000;
-        if (elapsed < thirtyMinutes) {
-            // L'utilisateur revient sur le site dans les 30 min après avoir cliqué sur payer
-            // On affiche une confirmation
-            showPaymentConfirmationPrompt(paymentEmail);
-            return;
-        } else {
-            // Trop de temps s'est écoulé, on nettoie le flag
-            localStorage.removeItem('scalify_payment_pending');
-            localStorage.removeItem('scalify_payment_email');
-            localStorage.removeItem('scalify_payment_time');
+    
+    // Check if coming back from Wave or direct payment redirect
+    if (paymentPending === 'true') {
+        // Clear flags
+        localStorage.removeItem('scalify_payment_pending');
+        localStorage.removeItem('scalify_payment_email');
+        localStorage.removeItem('scalify_payment_time');
+        
+        // Put the user session in verification pending status
+        if (USER_SESSION && USER_SESSION.isAuthenticated) {
+            USER_SESSION.isPendingVerification = true;
+            USER_SESSION.isPremium = false;
+            updateUser(USER_SESSION.email, { isPendingVerification: true, isPremium: false });
+            saveSession(USER_SESSION);
+            updateDashboardUI();
         }
-    }
-
-    // Vérifier aussi les paramètres d'annulation
-    if (urlParams.get('payment') === 'cancel') {
-        window.history.replaceState({}, document.title, window.location.pathname);
-        localStorage.removeItem('scalify_payment_pending');
-        localStorage.removeItem('scalify_payment_email');
-        localStorage.removeItem('scalify_payment_time');
-        showToast("Paiement annulé. Vous pouvez réessayer à tout moment.", "warning");
-    }
-}
-
-// ── Activation du premium après paiement confirmé ───────────
-function activatePremiumAfterPayment(email) {
-    // Restaurer la session
-    const session = getSession();
-    if (session && session.isAuthenticated) {
-        USER_SESSION = { ...USER_SESSION, ...session };
-    }
-
-    USER_SESSION.isPremium = true;
-    USER_SESSION.subscriptionExpiry = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
-    USER_SESSION.score = (USER_SESSION.score || 0) + 200;
-
-    updateUser(USER_SESSION.email || email, {
-        isPremium: true,
-        subscriptionExpiry: USER_SESSION.subscriptionExpiry,
-        score: USER_SESSION.score
-    });
-    saveSession(USER_SESSION);
-
-    // Nettoyer les flags de paiement
-    localStorage.removeItem('scalify_payment_pending');
-    localStorage.removeItem('scalify_payment_email');
-    localStorage.removeItem('scalify_payment_time');
-
-    showToast("✅ Paiement confirmé ! Votre abonnement VIP est actif pour 1 mois.", "success");
-
-    if (USER_SESSION.isAuthenticated) {
-        showView("app-dashboard");
-        updateDashboardUI();
-    }
-}
-
-// ── Prompt de confirmation de paiement ──────────────────────
-// Si l'utilisateur revient sur le site après avoir cliqué "payer",
-// on lui demande de confirmer que le paiement a bien été effectué
-function showPaymentConfirmationPrompt(email) {
-    const confirmed = confirm(
-        "🎉 Bienvenue ! Avez-vous effectué votre paiement avec succès sur CinetPay ?\n\n" +
-        "Cliquez OK si oui, ou Annuler si le paiement n'a pas été finalisé."
-    );
-
-    if (confirmed) {
-        activatePremiumAfterPayment(email);
-    } else {
-        localStorage.removeItem('scalify_payment_pending');
-        localStorage.removeItem('scalify_payment_email');
-        localStorage.removeItem('scalify_payment_time');
-        showToast("Pas de souci ! Vous pouvez payer à tout moment depuis votre compte.", "info");
+        
+        showToast("⏳ Paiement en attente. Veuillez entrer le code d'activation pour accéder à l'espace premium.", "warning");
+        appSwitchTab("tab-account");
     }
 }
 
@@ -1980,19 +1906,43 @@ function setupChatbot() {
 
     function getBotReply(q) {
         const lower = q.toLowerCase();
+        
+        // Fallback standard rules
         if (lower.includes("prix") || lower.includes("tarif") || lower.includes("abonnement"))
-            return "L'abonnement SCALIFY est de 5 000 FCFA/mois avec acces complet a tous les outils. Paiement par Wave ou Orange Money.";
-        if (lower.includes("cle") || lower.includes("acces"))
-            return "Votre cle d'acces unique vous a ete attribuee lors de l'inscription. Elle est visible dans votre espace Compte. Contactez-nous si vous l'avez perdue.";
-        if (lower.includes("produit") || lower.includes("tendance"))
-            return "Consultez l'onglet Produits Gagnants pour decouvrir les articles les plus rentables du moment au Senegal.";
-        if (lower.includes("livraison") || lower.includes("transport"))
-            return "Les frais de fret dependent du poids et du mode (aerien 10-15j ou maritime 30-45j). Utilisez le Calculateur pour estimer vos couts reels.";
-        if (lower.includes("simulation") || lower.includes("business"))
-            return "Le Simulateur Business Plan V2 vous permet de modeliser vos ventes sur 30 jours avec budget pub, CAC et taux de livraison.";
-        if (lower.includes("contact") || lower.includes("aide") || lower.includes("support"))
-            return "Pour toute assistance, rejoignez notre groupe Telegram VIP ou envoyez un email a support@scalify.sn.";
-        return "Merci pour votre message. Pour une aide plus detaillee, utilisez les modules du dashboard ou contactez notre support via le groupe Telegram VIP.";
+            return "L'abonnement SCALIFY est de 5 000 FCFA/mois avec accès complet à tous les outils. Le paiement se fait via Wave Sénégal.";
+        if (lower.includes("clé") || lower.includes("cle") || lower.includes("accès") || lower.includes("acces"))
+            return "Votre clé d'accès unique vous a été attribuée lors de l'inscription. Elle est visible dans votre espace Compte. Contactez l'administrateur si vous l'avez perdue.";
+        if (lower.includes("telegram") || lower.includes("télégram") || lower.includes("groupe") || lower.includes("communauté"))
+            return "Vous pouvez rejoindre notre communauté d'e-commerce sur le groupe Telegram officiel ici : https://t.me/formationecomacademie";
+            
+        // Dynamic search in our E-commerce Knowledge Base (CHATBOT_KNOWLEDGE)
+        if (typeof CHATBOT_KNOWLEDGE !== 'undefined' && CHATBOT_KNOWLEDGE.categories) {
+            let bestMatch = null;
+            let maxMatchesCount = 0;
+            
+            // Loop categories
+            for (const category of CHATBOT_KNOWLEDGE.categories) {
+                // Check if any category keyword is in the query
+                const hasCategoryKeyword = category.keywords.some(kw => lower.includes(kw));
+                if (hasCategoryKeyword) {
+                    // Search QA in this category
+                    for (const qaItem of category.qa) {
+                        // Count how many keywords of the QA item match the query
+                        const matchCount = qaItem.keywords.filter(kw => lower.includes(kw)).length;
+                        if (matchCount > maxMatchesCount) {
+                            maxMatchesCount = matchCount;
+                            bestMatch = qaItem.answer;
+                        }
+                    }
+                }
+            }
+            
+            if (bestMatch) {
+                return bestMatch;
+            }
+        }
+        
+        return "Je suis le copilote IA Scalify spécialisé en e-commerce. Je peux vous guider sur le sourcing en Chine (Alibaba, 1688), le transport par cargo/GP vers le Sénégal, la publicité (Facebook/TikTok Ads), ou les stratégies de livraison à Dakar (COD). Posez-moi une question plus précise, ou rejoignez notre groupe Telegram : https://t.me/formationecomacademie !";
     }
 }
 
